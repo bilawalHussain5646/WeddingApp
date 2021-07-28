@@ -1,0 +1,305 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+@font-face {
+  font-family: Heading;
+  src: url("../fonts/Quicksand-Bold.ttf");
+}
+@font-face {
+  font-family: SubHeading;
+  src: url("../fonts/Quicksand-Medium.ttf");
+}
+@font-face {
+  font-family: Paragraph;
+  src: url("../fonts/Quicksand-Light.ttf");
+}
+@font-face {
+  font-family: Regular;
+  src: url("../fonts/Quicksand-Regular.ttf");
+}
+@font-face {
+  font-family: SemiBold;
+  src: url("../fonts/Quicksand-SemiBold.ttf");
+}
+h1 {
+  color: #ceb08d !important;
+  font-family: Gabriola;
+}
+p {
+  font-family: Gabriola;
+  font-size: 24px !important;
+}
+h2 {
+  color: #ceb08d !important;
+  font-family: Gabriola;
+}
+h3 {
+  font-size: 18px;
+  text-transform: none !important;
+  font-weight: normal !important;
+  color: #ceb08d !important;
+  font-family: Gabriola;
+}
+h4 {
+  color: #302d2b !important;
+  font-family: Gabriola;
+  font-size: 24px !important;
+}
+span {
+  font-family: Gabriola;
+}
+a {
+  font-family: Gabriola;
+
+  font-size: 24px !important;
+}
+label {
+  font-family: Gabriola !important;
+  color: #a6a6a6;
+  font-size: 24px !important;
+}
+input {
+  font-family: Gabriola !important;
+  font-size: 18px !important;
+}
+
+/*  Login CSS */
+
+.auth {
+  padding: 80px 35px 0px 35px !important;
+}
+.auth-title {
+  color: rgb(206, 176, 141);
+  padding-bottom: 65px;
+  font-family: Gabriola;
+  font-size: 24px;
+}
+.auth-input-label {
+  color: rgb(64, 64, 64);
+  padding-bottom: 0px !important;
+  line-height: 18px !important;
+}
+.auth-input {
+  margin-top: 0px;
+  border-top: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  border-bottom: 1px solid rgb(166, 166, 166) !important;
+  margin-bottom: 35px !important;
+}
+
+.auth-login-button {
+  font-size: 18px;
+  margin-top: 0px !important;
+  color: rgb(255, 255, 255);
+  padding-bottom: 0px !important;
+  margin-bottom: 15px !important;
+}
+
+.auth-label-guide {
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+}
+.auth-label-signup {
+  padding-left: 5px;
+  color: rgb(206, 176, 141);
+  font-size: 16px;
+  text-decoration: none;
+}
+.auth-label-signup:hover {
+  color: rgb(206, 176, 141);
+}
+
+/* Signup CSS */
+
+.auth-signup {
+  padding: 50px 35px 0px 35px !important;
+}
+/* Registration CSS */
+.signup-input-label {
+  color: rgb(166, 166, 166) !important;
+}
+.signup-input {
+  border: 1px solid rgb(206, 176, 141) !important;
+  border-radius: 7px;
+}
+.compulsory-field {
+  color: rgb(255, 0, 0) !important;
+}
+.previous-button-block {
+  padding: 120px 0px 0px 0px !important;
+}
+.previous-button {
+  color: rgb(127, 127, 127) !important;
+  border: 2px solid rgb(206, 176, 141) !important;
+  background-color: white !important;
+  width: 150px;
+}
+.next-button {
+  color: rgb(255, 255, 255) !important;
+  border: 2px solid rgb(206, 176, 141) !important;
+  background-color: rgb(206, 176, 141) !important;
+  width: 150px;
+}
+/* ----------------------------- */
+/* Date CSS */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url("../images/calendar.png") no-repeat;
+  background-size: 100% 100%;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
+input::-webkit-datetime-edit {
+  position: relative;
+  left: 0;
+  right: 0;
+}
+input::-webkit-datetime-edit-fields-wrapper {
+  position: relative;
+  left: 0;
+  right: 0;
+}
+/* ---------------------------- */
+/* Common CSS */
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: rgb(217, 217, 217);
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgb(217, 217, 217);
+  opacity: 1;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: rgb(217, 217, 217);
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(217, 217, 217);
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(217, 217, 217);
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: rgb(217, 217, 217);
+}
+.previous-button:focus,
+button:focus,
+.next-button:focus,
+.auth-login-button:focus,
+input:focus {
+  outline: none !important;
+}
+/* --------------------- */
+
+/* Navbar CSS */
+.navbar-custom {
+  background-color: rgb(251, 247, 243) !important;
+  padding-top: 7px !important;
+}
+.navbar-tabs {
+  color: rgb(166, 166, 166) !important;
+  font-size: 18px;
+}
+/* --------------------- */
+.line {
+  display: inline-block;
+  border-bottom: 0.5px solid #ceae83 !important;
+}
+
+.navigation-dropdown-color {
+  color: #a6a6a6 !important;
+}
+.sidenav {
+  height: 100%;
+  width: 100%;
+  background-color: #f8f5f5;
+  overflow-x: hidden;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-family: Gabriola;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f8c2ae;
+}
+.show-image {
+}
+.show-image:hover {
+  background: rgb(70, 62, 62);
+  opacity: 0.8;
+}
+.preview-button,
+.edit-button {
+  position: absolute;
+
+  display: none !important;
+}
+.show-image:hover .preview-button {
+  top: 40%;
+  left: 25%;
+  display: block !important;
+}
+
+.show-image:hover .edit-button {
+  top: 20%;
+
+  right: 25%;
+  display: block !important;
+}
+.show-image:hover .title-card {
+  color: white;
+}
+.navbar-setting {
+  margin-left: 320px;
+}
+.nav-item {
+  margin: 10px 15px 10px 15px !important;
+  padding: 0px 2px !important;
+}
+.nav-link {
+  color: rgb(166, 166, 166) !important;
+}
+.nav-item:hover {
+  border: 1px solid #d1b594;
+
+  border-radius: 15px;
+}
+
+input[type="button"],
+button {
+  background-color: #e3d1bd !important;
+  padding-top: 5px !important;
+  padding-bottom: 0px !important;
+  border: 2px solid #e3d1bd !important;
+  border-radius: 7px !important;
+  font-size: 24px !important;
+  font-family: Gabriola !important;
+}
+.UpdateClass {
+}
+/* input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="time"] {
+  border: 2px solid #ceb08d !important;
+  border-radius: 5px;
+} */

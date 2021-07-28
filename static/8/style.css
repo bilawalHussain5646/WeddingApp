@@ -1,0 +1,22 @@
+* {
+  font-family: "Assistant", sans-serif !important;
+}
+input,
+textarea {
+  box-shadow: none !important;
+}
+input:active,
+input:focus,
+input:hover,
+textarea:active,
+textarea:focus,
+textarea:hover {
+  border: 2px solid #fa8d9f !important;
+}
+img:hover {
+  box-shadow: #f02d73 !important;
+}
+.hbtn:hover {
+  background-color: #fff !important;
+  color: #f02d73 !important;
+}

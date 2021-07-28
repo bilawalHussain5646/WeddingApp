@@ -1,0 +1,39 @@
+input,
+textarea {
+  box-shadow: none !important;
+}
+input:active,
+input:focus,
+input:hover,
+textarea:active,
+textarea:focus,
+textarea:hover {
+  border: 2px solid #b6001e !important;
+}
+
+.couples {
+  transition: transform 1s ease-in-out;
+}
+
+.couples:hover {
+  transform: scale(1.1);
+  filter: opacity(70%);
+}
+
+.couple:hover {
+  border: 3px solid #aa001c !important;
+}
+
+/* .couples {
+    transition: transform 1s ease-in-out;
+  }
+  
+  .couples:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: opacity(70%);
+  }
+   */
+.dropbtn:hover {
+  color: #fff !important;
+  background-color: #ff4061 !important;
+}

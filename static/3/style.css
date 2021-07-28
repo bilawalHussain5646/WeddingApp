@@ -1,0 +1,18 @@
+.btnheader:hover {
+  background-color: #75c5b1 !important;
+}
+h1 {
+  font-family: "Lato", sans-serif;
+}
+input,
+textarea {
+  box-shadow: none !important;
+}
+input:active,
+input:focus,
+input:hover,
+textarea:active,
+textarea:focus,
+textarea:hover {
+  border: 2px solid #55ba7aef !important;
+}
