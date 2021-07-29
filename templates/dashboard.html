@@ -1,6 +1,6 @@
 {% extends "default_user.html" %} {%block title%} Dashboard {% endblock %}
 {%block content%}
-<div class="mb-5">
+<div class="mb-5 container-fluid-fluid">
   <div class="row py-2" style="background-color: #cecece">
     <div class="col-lg-4" style="background-color: #cecece; padding-right: 7px">
       <div class="card">
@@ -9,7 +9,7 @@
             <div class="row" style="border-bottom: 1px solid black">
               <div class="col-2"></div>
               <div class="col-8 text-center">Your Wedding Details</div>
-              <div class="col-2 text-end">
+              <div class="col-lg-2 text-end">
                 <a
                   style="color: #b98e7f; text-decoration: none"
                   href="/profile?setting=2"
@@ -160,27 +160,20 @@
               "
             >
           
-                <div class="col-10">Website Visible ?</div>
+                <div class="col-6">Website Visible ?</div>
               
-                <div class="col-2 d-flex justify-content-end">
-               
-                  <a href="/profile?setting=2" style="text-decoration: none;">
-                    <div
-                      style="
-                        width: 25px;
-                        height: 30px;
-                        background: url('static/images/visible.png') no-repeat;
-                        background-size: 100%;
-                      "></div>
-                      </a
-              >
+                <div class="col-2 d-flex justify-content-end mb-3">
+                    <div class="form-check form-switch " >
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>                     
+                    </div>
               </div>
-                <div class="col-10">Preview Website</div>
+                <div class="col-6">Preview Website</div>
                 <div class="col-2 d-flex justify-content-end">
                
                   <a href="/profile?setting=2" style="text-decoration: none;">
                     <div
                       style="
+                        margin-right: 2vh;
                         width: 25px;
                         height: 30px;
                         background: url('static/images/preview-tab.png') no-repeat;
@@ -203,7 +196,7 @@
         </div>
       </div>
       <div
-        class="col-lg-8 p-4"
+        class="col-lg-8 p-4 col-md-10 col-sm-12"
         style="
           background-image: url('static/images/dashboard-background.png');
           background-size: cover;
@@ -211,15 +204,15 @@
           background-position: center;
         "
       >
-        <div class="mx-auto">
-          <div class="text-center mt-5" style="color: #d1b594">
-            <h1 style="font-size: xxx-large">
+        <div class="mx-auto pt-lg-4">
+          <div class="text-center pt-lg-5" style="color: #d1b594">
+            <h1 class="pt-lg-5 fs-sm-6" style="font-size: xxx-large">
               {{session['groomFirstName']}} & {{session['brideFirstName']}}'s
               Wedding
             </h1>
           </div>
-          <div class="text-center mt-5">
-            <h1 style="font-size: xxx-large">48 days to go!</h1>
+          <div class="text-center pt-lg-5  ">
+            <h1 class="text-dark display-sm-6" style="font-size: xxx-large; ">48 days to go!</h1>
           </div>
         </div>
       </div>
