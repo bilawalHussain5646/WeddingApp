@@ -24,38 +24,36 @@ content%}
           <h5 style="color: #cfb290">{{vendor[1]}}</h5>
 
           <p>
-            <span class="mr-1" style="color: #aeaeae"
-              ><strong>{{vendor[3]}}</strong></span
-            >
+            <span class="mr-1"><strong>{{vendor[3]}}</strong></span>
           </p>
-          <p class="pt-1">{{vendor[5]}}</p>
+          <p class="pt-1" style="color: #aeaeae">{{vendor[5]}}</p>
         </div>
         <div class="col">
           <div class="table-responsive mt-5">
             <table class="table table-sm table-borderless mb-0 mt-4">
               <tbody>
                 <tr>
-                  <th class="pl-0 w-25" scope="row"><strong>City</strong></th>
-                  <td>{{vendor[4]}}</td>
+                  <th class="pl-0 w-25" scope="row"><p>City</p></th>
+                  <td style="color: #aeaeae !important">{{vendor[4]}}</td>
                 </tr>
                 {% if vendor[7] %}
                 <tr>
-                  <th class="pl-0 w-25" scope="row">
-                    <strong>Phone Number</strong>
+                  <th class="w-25" scope="row">
+                    <p>Phone Number</p>
                   </th>
 
-                  <td>{{vendor[7]}}</td>
+                  <td style="color: #aeaeae !important">{{vendor[7]}}</td>
                 </tr>
                 {% endif %} {% if vendor[6] %}
                 <tr>
-                  <th class="pl-0 w-25" scope="row"><strong>Email</strong></th>
+                  <th class="pl-0 w-25" scope="row"><p>Email</p></th>
 
-                  <td>{{vendor[6]}}</td>
+                  <td style="color: #aeaeae !important">{{vendor[6]}}</td>
                 </tr>
                 {% endif %} {% if vendor[8] %}
                 <tr>
                   <th class="pl-0 w-25" scope="row">
-                    <strong>Website</strong>
+                    <p>Website</p>
                   </th>
 
                   <td><a href="https://{{vendor[8]}}">{{vendor[8]}}</a></td>
@@ -63,7 +61,7 @@ content%}
                 {% endif %} {% if vendor[9] %}
                 <tr>
                   <th class="pl-0 w-25" scope="row">
-                    <strong>Instagram</strong>
+                    <p>Instagram</p>
                   </th>
 
                   <td><a href="{{vendor[9]}}">{{vendor[9]}}</a></td>
@@ -71,7 +69,7 @@ content%}
                 {% endif %} {% if vendor[10] %}
                 <tr>
                   <th class="pl-0 w-25" scope="row">
-                    <strong>Facebook</strong>
+                    <p>Facebook</p>
                   </th>
 
                   <td><a href="{{vendor[10]}}">{{vendor[10]}}</a></td>

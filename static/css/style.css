@@ -46,7 +46,8 @@ h3 {
   color: #ceb08d !important;
   font-family: Gabriola;
 }
-h4 {
+h4,
+h5 {
   color: #302d2b !important;
   font-family: Gabriola;
   font-size: 24px !important;
@@ -154,6 +155,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 1;
   display: block;
   text-indent: -9999px !important;
+  background-color: pink !important;
   background: none;
   border-width: thin;
 }
@@ -309,8 +311,70 @@ input[type="time"] {
 @media (max-width: 544px) {
   h1 {
     font-size: 1.4rem !important;
-  } /*1rem = 16px*/
+  }
+  .account {
+    margin-left: 0 !important;
+  }
+  #nav {
+    margin-left: 0 !important;
+  }
+  nav {
+    height: auto !important;
+  }
 }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .account {
+    margin-left: 0 !important;
+  }
+  #nav {
+    margin-left: 0 !important;
+  }
+  nav {
+    height: auto !important;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 1000px) and (min-width: 550px) {
+  .account {
+    margin-left: 0 !important;
+  }
+  #nav {
+    margin-left: 0 !important;
+  }
+  nav {
+    height: auto !important;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  .account {
+    margin-left: 0 !important;
+  }
+  #nav {
+    margin-left: 0 !important;
+  }
+  nav {
+    height: auto !important;
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (max-width: 1400px) {
+  .account {
+    margin-left: 0 !important;
+  }
+  #nav {
+    margin-left: 0 !important;
+  }
+  nav {
+    height: auto !important;
+  }
+}
+
 input,
 btn {
   box-shadow: none !important;
@@ -322,6 +386,7 @@ btn:active,
 btn:focus,
 btn:hover {
   border: none;
+  box-shadow: none !important;
 }
 
 .form-check-input:checked {

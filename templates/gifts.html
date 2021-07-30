@@ -171,8 +171,7 @@ content%}
         />
       </a>
       <div class="card-body">
-        <h5 class="card-title text-center col-12 text-truncate">{{gift[1]}}</h5>
-
+        <h5 class="card-title text-center text-truncate">{{gift[1]}}</h5>
         <p class="card-text text-center">{{gift[5]}}</p>
         <form action="/add-cart" method="GET">
           <input name="id" type="text" value="{{gift[4]}}" hidden />
@@ -198,8 +197,10 @@ content%}
         />
       </a>
       <div class="card-body">
-        <h5 class="card-title text-center col-12 text-truncate">{{gift[1]}}</h5>
-        <p class="card-text text-center">{{gift[2]}}</p>
+        <h5 class="card-title text-center text-truncate">{{gift[1]}}</h5>
+        <p class="card-text text-center" style="color: #aeaeae !important">
+          {{gift[2]}}
+        </p>
         <p class="card-text text-center">{{gift[5]}}</p>
         <form action="/add-cart" method="GET">
           <input name="id" type="text" value="{{gift[4]}}" hidden />
