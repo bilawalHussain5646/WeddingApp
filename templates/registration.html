@@ -186,7 +186,7 @@
     <div id="Date" style="margin-top: 35px !important">
       <div class="row mt-2">
         <div class="col p-0">
-          <div>
+          <div class="mt-3">
             <label class="auth-input-label"
               >Date<span class="compulsory-field">*</span></label
             >
@@ -195,31 +195,31 @@
         <div class="col-9">
           <div class="row">
             <div class="col-6 p-0">
-              <div class="w-100 signup-input">
+              <div class="w-100 signup-input mt-3">
                 <span class="ps-2"
                   ><img
                     src="./static/images/calendar.png"
                     width="20px"
                     alt=""
                   />
+                  <input
+                    type="Date"
+                    class="border border-0 mx-1"
+                    id="inputDateOfMarriage"
+                    name="inputDateOfMarriage"
+                    placeholder="yy-mm-dd "
+                    required
+                  />
                 </span>
-                <input
-                  type="date"
-                  class="border border-0 mx-1"
-                  id="inputDateOfMarriage"
-                  name="inputDateOfMarriage"
-                  placeholder="yy-mm-dd "
-                  required
-                />
               </div>
             </div>
 
             <div class="col-6">
               <input
                 type="text"
-                class="signup-input px-2 w-100"
+                class="signup-input px-2 w-100 mt-3"
                 placeholder="Time (Option)"
-                onfocus="(this.type='time')"
+                onfocus="(this.type='Time')"
                 onblur="if(this.value==''){this.type='text'}"
                 name="inputTimeOfMarriage"
               />
@@ -229,14 +229,14 @@
       </div>
       <div class="row px-0" style="margin-top: 5px !important">
         <div class="col p-0">
-          <div>
+          <div class="mt-3">
             <label class="auth-input-label text-center">End Date</label>
           </div>
         </div>
         <div class="col-9">
           <div class="row">
             <div class="col-6 p-0">
-              <div class="w-100 signup-input">
+              <div class="w-100 signup-input mt-3">
                 <span class="ps-2"
                   ><img
                     src="./static/images/calendar.png"
@@ -252,12 +252,12 @@
               </div>
             </div>
             <div class="col-6">
-              <div class="form-group label-floating">
+              <div class="form-group label-floating mt-3">
                 <input
                   type="text"
                   class="signup-input px-2 w-100"
                   placeholder="Time (Option)"
-                  onfocus="(this.type='time')"
+                  onfocus="(this.type='Time')"
                   onblur="if(this.value==''){this.type='text'}"
                   name="inputEndTimeOfMarriage"
                 />
