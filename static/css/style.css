@@ -337,7 +337,7 @@ input[type="time"] {
 }
 
 // Large devices (desktops, 992px and up)
-@media (max-width: 1000px) and (min-width: 550px) {
+@media (max-width: 900px) {
   .account {
     margin-left: 0 !important;
   }
