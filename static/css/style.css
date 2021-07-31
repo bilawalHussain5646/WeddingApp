@@ -52,6 +52,11 @@ h5 {
   font-family: Gabriola;
   font-size: 24px !important;
 }
+option,
+select {
+  color: #302d2b !important;
+  font-family: Gabriola;
+}
 span {
   font-family: Gabriola;
 }
