@@ -316,12 +316,12 @@ input[type="time"] {
   border: 2px solid #ceb08d !important;
   border-radius: 5px;
 } */
-@media (max-width: 1900px) {
+@media (min-width: 1600px) {
   .account {
-    margin-left: 20vh !important;
+    margin-left: 30vh !important;
   }
   #nav {
-    margin-left: 60vh !important;
+    margin-left: 10vh !important;
   }
 }
 @media (min-width: 1400px) {
@@ -340,12 +340,12 @@ input[type="time"] {
     margin-left: 40vh !important;
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 1066px) {
   .account {
     margin-left: 0vh !important;
   }
   #nav {
-    margin-left: 16vh !important;
+    margin-left: 10vh !important;
   }
 }
 
