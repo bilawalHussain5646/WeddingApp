@@ -206,7 +206,7 @@ def login():
                     
 
                     cur.execute(
-                        '''SELECT count(GuestNames) FROM guests where username = %s''',
+                        '''SELECT count(Guest_ID) FROM guestinfo where username = %s''',
                         (session['username'],))
                     countedGuests = cur.fetchone()
                     if countedGuests is None:

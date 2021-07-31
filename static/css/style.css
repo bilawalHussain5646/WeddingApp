@@ -334,10 +334,10 @@ input[type="time"] {
 }
 @media (max-width: 1366px) {
   .account {
-    margin-left: 5vh !important;
+    margin-left: 8vh !important;
   }
   #nav {
-    margin-left: 40vh !important;
+    margin-left: 45vh !important;
   }
 }
 @media (max-width: 1200px) and (min-width: 1066px) {
