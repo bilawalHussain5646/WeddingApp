@@ -206,10 +206,16 @@ def login():
                     
 
                     cur.execute(
-                        '''SELECT count(guest_name) FROM guests where username = %s''',
+                        '''SELECT count(GuestNames) FROM guests where username = %s''',
                         (session['username'],))
                     countedGuests = cur.fetchone()
-                    session['guests'] = countedGuests[0]
+                    if countedGuests is None:
+                        # no template and url has yet set
+                        session['guests'] = "0"
+                    else:
+                        session['guests'] = countedGuests[0]
+
+                    
                     cur.execute("SELECT count(itemName) FROM item_cart where username=%s", (session['username'],))
                     registries = cur.fetchone()
                     session['registries'] = registries[0]
@@ -383,17 +389,7 @@ def guestslist():
         if request.method == "GET":
             g.username = session['username']
 
-            Guests: list = []
-
-            cur = mysql.connection.cursor()
-
-            # vendor details
-            cur.execute(
-                '''SELECT id,GuestNames,street_address,AptFloor,City,Country,StateProvince,ZipCode,Invited,email,phone,Status,Reply,Total FROM guests where username = %s''',
-                (session['username'],))
-            guestsData = cur.fetchall()
-            mysql.connection.commit()
-           
+            Guests: dict = {}
             status = []
             replied = 0
             Attending = 0
@@ -402,41 +398,66 @@ def guestslist():
             Invited = 0
             Not_Invited = 0
 
-            for guest in guestsData:
-                Guests.append(guest)
+            try:
+                cur = mysql.connection.cursor()
 
-            cur.execute(
-                '''SELECT status,Reply FROM guestInfo where username = %s''',
-                (session['username'],))
-            statusData = cur.fetchall()
+                # vendor details
+                cur.execute(
+                    '''SELECT id,street_address,AptFloor,City,Country,StateProvince,ZipCode,Invited,email,phone,Total FROM guests where username = %s''',
+                    (session['username'],))
+                result = cur.fetchall()
+                # print(result)
+                if result is None:
+                    print("No Guest Found")
+                    pass
+                else:
+                    for guest in result:
+                        try:
+                            cur.execute(('''SELECT Title,First_Name,Last_Name,Status FROM guestinfo WHERE guest_info_id = %s'''),(guest[0],))
+                            result1 = cur.fetchall();
+                            # print(result1)
+                            for stat in result1:
+                                if stat[3] == "Not Replied":
+                                    replied= replied + 1
+                            
+                                if stat[3] == "Attending":
+                                    Attending = Attending + 1
+                                
+                                if stat[3] == "Not Attending":
+                                    Not_Attending = Not_Attending + 1
+                                
+                                if stat[3] == "Maybe":
+                                    Maybe = Maybe + 1
+                                
+                                if stat[3] == "Invited":
+                                    Invited = Invited +  1 
+                                
+                                if stat[3] == "Not Invited":
+                                    Not_Invited = Not_Invited + 1 
+                        
+                        
+                            members : dict = {}
+                            i = 0
+                            for guestDetails in result1: 
+                                members[i] = {"Title": guestDetails[0], "First Name": guestDetails[1], "Last Name": guestDetails[2], "Status": guestDetails[3]}
+                                i += 1
+                            Guests[guest[0]]={'street address': guest[1], 'AptFloor': guest[2], 'City': guest[3],'Country': guest[4],'StateProvince': guest[5],'ZipCode': guest[6],'Invited': guest[7],'email': guest[8],'phone': guest[9],'Total': guest[10], 'members': members}
+                        except:
+                            print("ERROR IN 2nd Loop")
+                
+                status.append(replied)
+                status.append(Attending)
+                status.append(Not_Attending)
+                status.append(Maybe)
+                status.append(Invited)
+                status.append(Not_Invited)
+           
+                mysql.connection.commit()
+                cur.close()
+
+            except:
+                print("Failed to add guest/guests")
             
-            mysql.connection.commit()
-            cur.close()
-            for st in statusData:
-                if st[1] == "Not Replied":
-                    replied= replied + 1
-                
-                if st[1] == "Attending":
-                    Attending = Attending + 1
-                
-                if st[1] == "Not Attending":
-                    Not_Attending = Not_Attending + 1
-                
-                if st[1] == "Maybe":
-                    Maybe = Maybe + 1
-                
-                if st[0] == "Invited":
-                    Invited = Invited +  1 
-                
-                if st[0] == "Not Invited":
-                    Not_Invited = Not_Invited + 1 
-
-            status.append(replied)
-            status.append(Attending)
-            status.append(Not_Attending)
-            status.append(Maybe)
-            status.append(Invited)
-            status.append(Not_Invited)
             return render_template("guestslist.html", Guests=Guests,status = status)
 
 
@@ -448,8 +469,7 @@ def guestslist():
                     firstName1 = request.form['inputFirstName1']
                     lastName1 = request.form['inputLastName1']
                     title1 = request.form['inputTitle1']
-                    GuestNames = title1+" "+firstName1+" "+lastName1
-
+                    
                 elif opt == "2":
                     firstName1 = request.form['inputFirstName1']
                     lastName1 = request.form['inputLastName1']
@@ -457,8 +477,7 @@ def guestslist():
                     firstName2 = request.form['inputFirstName2']
                     lastName2 = request.form['inputLastName2']
                     title2 = request.form['inputTitle2']
-                    GuestNames = title1+" "+firstName1+" "+lastName1+","+title2+" "+firstName2+" "+lastName2
-
+                    
                 elif opt == "3":
                     firstName1 = request.form['inputFirstName1']
                     lastName1 = request.form['inputLastName1']
@@ -469,8 +488,7 @@ def guestslist():
                     firstName3 = request.form['inputFirstName3']
                     lastName3 = request.form['inputLastName3']
                     title3 = request.form['inputTitle3']
-                    GuestNames = title1+" "+firstName1+" "+lastName1+","+title2+" "+firstName2+" "+lastName2+","+title3+" "+firstName3+" "+lastName3
-                
+                    
                 invited = request.form['invited']
                 email = request.form['inputEmail']
                 street_address = request.form['inputStreetAddress']
@@ -480,38 +498,42 @@ def guestslist():
                 StateProvince = request.form['inputStateProvince']
                 ZipCode = request.form['inputZipCode']
                 phone = request.form['inputContactNumber']
-                status = "Not Invited"
-                Reply = "Not Replied"
+                Status = "Not Invited"
+               
                 # Email sent to the user
                 try:
                         cur = mysql.connection.cursor()
                         cur.execute(
-                            "INSERT INTO guests(GuestNames,street_address,AptFloor,City,Country,StateProvince,ZipCode,email,phone,Status,invited,Reply,Total,username) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                            (GuestNames,street_address,AptFloor,City,Country,StateProvince,ZipCode,email,phone,status,invited,Reply,int(opt),session['username']))
+                            "INSERT INTO guests(street_address,AptFloor,City,Country,StateProvince,ZipCode,email,phone,invited,Total,username) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                            (street_address,AptFloor,City,Country,StateProvince,ZipCode,email,phone,invited,int(opt),session['username']))
                     
                         
+                        cur.execute('''SELECT id FROM guests where username = %s AND street_address = %s AND AptFloor = %s AND City=%s AND Country=%s AND StateProvince=%s AND ZipCode=%s AND email=%s AND phone=%s AND invited=%s AND Total=%s''',
+                (session['username'],street_address,AptFloor,City,Country,StateProvince,ZipCode,email,phone,invited,int(opt)))
+                        result = cur.fetchone();
+                        guestID = result;
                         # Maintain Guest Info table for using it when we deal with guest seats
                         if opt == "1":
                             cur.execute(
-                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,status,reply,username) VALUES (%s,%s,%s,%s,%s,%s)",
-                                (title1,firstName1,lastName1,status,Reply,session['username']))
+                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,Status,guest_info_id,username) VALUES (%s,%s,%s,%s,%s,%s)",
+                                (title1,firstName1,lastName1,Status,guestID,session['username']))
                         elif opt == "2":
                             cur.execute(
-                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,status,reply,username) VALUES (%s,%s,%s,%s,%s,%s)",
-                                (title1,firstName1,lastName1,status,Reply,session['username']))
+                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,Status,guest_info_id,username) VALUES (%s,%s,%s,%s,%s,%s)",
+                                (title1,firstName1,lastName1,Status,guestID,session['username']))
                             cur.execute(
-                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,status,reply,username) VALUES (%s,%s,%s,%s,%s,%s)",
-                                (title2,firstName2,lastName2,status,Reply,session['username']))
+                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,Status,guest_info_id,username) VALUES (%s,%s,%s,%s,%s,%s)",
+                                (title2,firstName2,lastName2,Status,guestID,session['username']))
                         elif opt == "3":
                             cur.execute(
-                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,status,reply,username) VALUES (%s,%s,%s,%s,%s,%s)",
-                                (title1,firstName1,lastName1,status,Reply,session['username']))
+                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,Status,guest_info_id,username) VALUES (%s,%s,%s,%s,%s,%s)",
+                                (title1,firstName1,lastName1,Status,guestID,session['username']))
                             cur.execute(
-                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,status,reply,username) VALUES (%s,%s,%s,%s,%s,%s)",
-                                (title2,firstName2,lastName2,status,Reply,session['username']))
+                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,Status,guest_info_id,username) VALUES (%s,%s,%s,%s,%s,%s)",
+                                (title2,firstName2,lastName2,Status,guestID,session['username']))
                             cur.execute(
-                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,status,reply,username) VALUES (%s,%s,%s,%s,%s,%s)",
-                                (title3,firstName3,lastName3,status,Reply,session['username']))
+                                "INSERT INTO guestInfo(Title,First_Name,Last_Name,Status,guest_info_id,username) VALUES (%s,%s,%s,%s,%s,%s)",
+                                (title3,firstName3,lastName3,Status,guestID,session['username']))
                         mysql.connection.commit()
                         cur.close()
                         flash("Guest Added Successfully", "success")
@@ -526,42 +548,18 @@ def guestslist():
                 # ----------------------------
             elif (request.form['action'] == "DeleteRow"):
                 ID = request.form['DeleteID']
-                GuestNames = request.form['guestNames']
-                print(GuestNames)
-                GuestList : list = []
-                GuestList = GuestNames.split(',')
-                print(GuestList)
-
-                numberOfGuests = len(GuestList)
-            
-                FirstName = []
-                LastName = []
-                title = []
-
-                for Guest in GuestList:
-                    guest = Guest.split()
-                    print(guest)
-                    title.append(guest[0])
-                    FirstName.append(guest[1])
-                    LastName.append(guest[2])
-
                 try:
                         cur = mysql.connection.cursor()
                         cur.execute(
+                            "DELETE from guestInfo WHERE guest_info_id=%s AND username=%s",
+                            (ID,session['username']))
+                        cur.execute(
                             "DELETE from guests WHERE id=%s AND username=%s",
                             (ID,session['username']))
-                    
-                        
-                        # Maintain Guest Info table for using it when we deal with guest seats
-                        for i in range(numberOfGuests):
-                            cur.execute(
-                                    "DELETE from guestInfo where Title = %s AND First_Name = %s AND Last_Name = %s AND username = %s",
-                                    (title[i],FirstName[i],LastName[i],session['username']))
-                        
+
                         mysql.connection.commit()
                         cur.close()
                         flash("Guest Deleted Successfully", "success")
-
 
                         return redirect(url_for("guestslist"))
 

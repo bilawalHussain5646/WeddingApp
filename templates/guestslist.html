@@ -218,6 +218,7 @@
                   name="invited"
                   id="option1"
                   value="Definetly"
+                  checked="checked"
                 />
                 <label class="form-check-label px-2" for="option1"
                   >Definetly</label
@@ -866,122 +867,56 @@
             </tr>
           </thead>
           <tbody id="tbody">
-            {% for Guest in Guests %}
+            {% for Guest_key, Guest_info in Guests.items()%}
 
             <tr>
               <td scope="row">
                 <input
                   type="checkbox"
                   aria-label="Checkbox for following text input"
-                  name="{{Guest[0]}}"
+                  id="{{Guest_key}}"
+                  name="selectopt"
                 />
               </td>
 
-              <td
-                class="UpdateClass"
-                scope="row"
-                data-guestID="{{Guest[0]}}"
-                data-guestNames="{{Guest[1]}}"
-                data-streetAddress="{{Guest[2]}}"
-                data-AptFloor="{{Guest[3]}}"
-                data-City="{{Guest[4]}}"
-                data-Country="{{Guest[5]}}"
-                data-StateProvince="{{Guest[6]}}"
-                data-ZipCode="{{Guest[7]}}"
-                data-Invited="{{Guest[8]}}"
-                data-email="{{Guest[9]}}"
-                data-phone="{{Guest[10]}}"
-                data-status="{{Guest[11]}}"
-                data-Reply="{{Guest[12]}}"
-                data-Total="{{Guest[13]}}"
-              >
-                <label>{{Guest[11]}}</label>
+              <td class="UpdateClass" scope="row">
+                {%for k in Guests[Guest_key]['members'].items()%}
+                <div><label>{{k[1]["Status"]}}</label></div>
+                {%endfor%}
               </td>
-              <td
-                class="UpdateClass"
-                scope="row"
-                data-guestID="{{Guest[0]}}"
-                data-guestNames="{{Guest[1]}}"
-                data-streetAddress="{{Guest[2]}}"
-                data-AptFloor="{{Guest[3]}}"
-                data-City="{{Guest[4]}}"
-                data-Country="{{Guest[5]}}"
-                data-StateProvince="{{Guest[6]}}"
-                data-ZipCode="{{Guest[7]}}"
-                data-Invited="{{Guest[8]}}"
-                data-email="{{Guest[9]}}"
-                data-phone="{{Guest[10]}}"
-                data-status="{{Guest[11]}}"
-                data-Reply="{{Guest[12]}}"
-                data-Total="{{Guest[13]}}"
-              >
-                <div><label>{{Guest[9]}}</label></div>
-                <div><label>{{Guest[10]}}</label></div>
+
+              <td class="UpdateClass" scope="row">
+                <div><label>{{Guests[Guest_key]['email']}}</label></div>
+
+                <label>{{Guests[Guest_key]['phone']}}</label>
               </td>
-              <td
-                class="UpdateClass"
-                scope="row"
-                data-guestID="{{Guest[0]}}"
-                data-guestNames="{{Guest[1]}}"
-                data-streetAddress="{{Guest[2]}}"
-                data-AptFloor="{{Guest[3]}}"
-                data-City="{{Guest[4]}}"
-                data-Country="{{Guest[5]}}"
-                data-StateProvince="{{Guest[6]}}"
-                data-ZipCode="{{Guest[7]}}"
-                data-Invited="{{Guest[8]}}"
-                data-email="{{Guest[9]}}"
-                data-phone="{{Guest[10]}}"
-                data-status="{{Guest[11]}}"
-                data-Reply="{{Guest[12]}}"
-                data-Total="{{Guest[13]}}"
-              >
-                <label>{{Guest[1]}}</label>
+
+              <td class="UpdateClass" scope="row">
+                {%for k in Guests[Guest_key]['members'].items()%}
+                <div>
+                  <label>
+                    {{k[1]["Title"]}} {{k[1]["First Name"]}} {{k[1]["Last Name"]}}
+                  </label>
+                </div>
+                {%endfor%}
               </td>
-              <td
-                class="UpdateClass"
-                scope="row"
-                data-guestID="{{Guest[0]}}"
-                data-guestNames="{{Guest[1]}}"
-                data-streetAddress="{{Guest[2]}}"
-                data-AptFloor="{{Guest[3]}}"
-                data-City="{{Guest[4]}}"
-                data-Country="{{Guest[5]}}"
-                data-StateProvince="{{Guest[6]}}"
-                data-ZipCode="{{Guest[7]}}"
-                data-Invited="{{Guest[8]}}"
-                data-email="{{Guest[9]}}"
-                data-phone="{{Guest[10]}}"
-                data-status="{{Guest[11]}}"
-                data-Reply="{{Guest[12]}}"
-                data-Total="{{Guest[13]}}"
-              >
-                <label>{{Guest[13]}}</label>
+
+              <td class="UpdateClass" scope="row">
+                <label>{{Guests[Guest_key]['Total']}}</label>
               </td>
-              <td
-                class="UpdateClass"
-                scope="row"
-                data-guestID="{{Guest[0]}}"
-                data-guestNames="{{Guest[1]}}"
-                data-streetAddress="{{Guest[2]}}"
-                data-AptFloor="{{Guest[3]}}"
-                data-City="{{Guest[4]}}"
-                data-Country="{{Guest[5]}}"
-                data-StateProvince="{{Guest[6]}}"
-                data-ZipCode="{{Guest[7]}}"
-                data-Invited="{{Guest[8]}}"
-                data-email="{{Guest[9]}}"
-                data-phone="{{Guest[10]}}"
-                data-status="{{Guest[11]}}"
-                data-Reply="{{Guest[12]}}"
-                data-Total="{{Guest[13]}}"
-              >
-                <label> {{Guest[8]}} </label>
+              <td class="UpdateClass" scope="row">
+                <label> {{Guests[Guest_key]['Invited']}} </label>
               </td>
               <td scope="row">
                 <form action="/guestslist" method="POST">
-                  <input name="DeleteID" value="{{Guest[0]}}" hidden />
-                  <input name="guestNames" value="{{Guest[1]}}" hidden />
+                  <input name="DeleteID" value="{{Guest_key}}" hidden />
+
+                  <input
+                    name="guestNames"
+                    value="{{Guests[Guest_key]['members']}}"
+                    hidden
+                  />
+
                   <button
                     class="bg-white border-0"
                     type="submit"
@@ -1007,7 +942,7 @@
 {% endblock %} {% block scriptPage %}
 
 <script>
-  var classname = document.getElementsByClassName("UpdateClass");
+  /*var classname = document.getElementsByClassName("UpdateClass");
   Array.from(classname).forEach(function (element) {
     element.addEventListener("click", function () {
       const section = element;
@@ -1097,7 +1032,7 @@
       // modal.find(".modal-title").text("New message to " + guestID);
     });
   });
-
+  */
   document.getElementById("tab1").style.display = "block";
   hideInput2();
   hideInput3();
