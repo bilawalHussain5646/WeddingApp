@@ -203,6 +203,8 @@ input::-webkit-datetime-edit-fields-wrapper {
 button:focus,
 .next-button:focus,
 .auth-login-button:focus,
+option,
+select,
 input:focus {
   outline: none !important;
   box-shadow: none !important;
@@ -315,20 +317,6 @@ input[type="time"] {
   #nav {
     margin-left: 50vh !important;
   }
-}
-
-input,
-btn {
-  box-shadow: none !important;
-}
-input:active,
-input:focus,
-input:hover,
-btn:active,
-btn:focus,
-btn:hover {
-  border: none;
-  box-shadow: none !important;
 }
 
 .form-check-input:checked {
