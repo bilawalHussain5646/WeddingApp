@@ -158,6 +158,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background: none;
   border-width: thin;
 }
+input[type="time"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  display: block;
+  text-indent: -9999px !important;
+  background: none;
+  border-width: thin;
+}
 input::-webkit-datetime-edit {
   position: relative;
   left: 0;
@@ -309,6 +316,14 @@ input[type="time"] {
   border: 2px solid #ceb08d !important;
   border-radius: 5px;
 } */
+@media (max-width: 1900px) {
+  .account {
+    margin-left: 20vh !important;
+  }
+  #nav {
+    margin-left: 60vh !important;
+  }
+}
 @media (min-width: 1400px) {
   .account {
     margin-left: 20vh !important;
@@ -319,10 +334,18 @@ input[type="time"] {
 }
 @media (max-width: 1366px) {
   .account {
-    margin-left: 20vh !important;
+    margin-left: 5vh !important;
   }
   #nav {
-    margin-left: 50vh !important;
+    margin-left: 40vh !important;
+  }
+}
+@media (max-width: 1200px) {
+  .account {
+    margin-left: 0vh !important;
+  }
+  #nav {
+    margin-left: 16vh !important;
   }
 }
 
