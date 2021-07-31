@@ -216,8 +216,11 @@
 
             <div class="col-6">
               <input
-                type="time"
+                type="text"
                 class="signup-input px-2 w-100"
+                placeholder="Time (Option)"
+                onfocus="(this.type='time')"
+                onblur="if(this.value==''){this.type='text'}"
                 name="inputTimeOfMarriage"
               />
             </div>
@@ -244,7 +247,6 @@
                 <input
                   type="date"
                   class="border border-0 mx-1"
-                  placeholder="yy-mm-dd "
                   name="inputEndDateOfMarriage"
                 />
               </div>
@@ -252,8 +254,11 @@
             <div class="col-6">
               <div class="form-group label-floating">
                 <input
-                  type="time"
+                  type="text"
                   class="signup-input px-2 w-100"
+                  placeholder="Time (Option)"
+                  onfocus="(this.type='time')"
+                  onblur="if(this.value==''){this.type='text'}"
                   name="inputEndTimeOfMarriage"
                 />
               </div>
