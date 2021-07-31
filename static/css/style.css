@@ -205,6 +205,7 @@ button:focus,
 .auth-login-button:focus,
 input:focus {
   outline: none !important;
+  box-shadow: none !important;
 }
 /* --------------------- */
 
