@@ -307,71 +307,12 @@ input[type="time"] {
   border: 2px solid #ceb08d !important;
   border-radius: 5px;
 } */
-
-@media (max-width: 544px) {
-  h1 {
-    font-size: 1.4rem !important;
-  }
+@media (min-width: 1400px) {
   .account {
-    margin-left: 0 !important;
+    margin-left: 20vh !important;
   }
   #nav {
-    margin-left: 0 !important;
-  }
-  nav {
-    height: auto !important;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .account {
-    margin-left: 0 !important;
-  }
-  #nav {
-    margin-left: 0 !important;
-  }
-  nav {
-    height: auto !important;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (max-width: 900px) {
-  .account {
-    margin-left: 0 !important;
-  }
-  #nav {
-    margin-left: 0 !important;
-  }
-  nav {
-    height: auto !important;
-  }
-}
-
-// X-Large devices (large desktops, 1200px and up)
-@media (max-width: 1200px) {
-  .account {
-    margin-left: 0 !important;
-  }
-  #nav {
-    margin-left: 0 !important;
-  }
-  nav {
-    height: auto !important;
-  }
-}
-
-// XX-Large devices (larger desktops, 1400px and up)
-@media (max-width: 1400px) {
-  .account {
-    margin-left: 0 !important;
-  }
-  #nav {
-    margin-left: 0 !important;
-  }
-  nav {
-    height: auto !important;
+    margin-left: 50vh !important;
   }
 }
 
