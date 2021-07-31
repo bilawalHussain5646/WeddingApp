@@ -155,7 +155,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 1;
   display: block;
   text-indent: -9999px !important;
-  background-color: pink !important;
   background: none;
   border-width: thin;
 }
@@ -311,6 +310,14 @@ input[type="time"] {
   border-radius: 5px;
 } */
 @media (min-width: 1400px) {
+  .account {
+    margin-left: 20vh !important;
+  }
+  #nav {
+    margin-left: 50vh !important;
+  }
+}
+@media (max-width: 1366px) {
   .account {
     margin-left: 20vh !important;
   }
