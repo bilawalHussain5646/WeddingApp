@@ -368,7 +368,7 @@ content%}
 </div>
 {% endblock %} {% block scriptPage %}
 <script>
-  $(document).ready(function () {
+  document.addEventListener("DOMContentLoaded", function (event) {
     const params = new URLSearchParams(window.location.search);
     result = params.get("setting");
     GroupMethod(result);
