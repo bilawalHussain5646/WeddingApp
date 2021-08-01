@@ -1,6 +1,6 @@
 {% extends "default_user.html" %} {%block title%} Gifts {% endblock %} {%block
 content%}
-<div class="mb-3">
+<div class="container mb-3">
   {% with messages = get_flashed_messages(with_categories=true) %} {% if
   messages %} {% for category, message in messages %}
   <div
@@ -12,8 +12,8 @@ content%}
   {% endfor %} {% endif %} {% endwith %}
 
   <!-- Button trigger modal -->
-  <div class="container pt-5 pb-5">
-    <div class="card-body mx-auto w-50 border">
+  <div class="container pt-5 pb-3">
+    <div class="card-body mx-auto w-50">
       <h5 class="card-title text-center">Add Gifts</h5>
 
       <p class="card-text text-center">From Other Websites</p>
@@ -133,10 +133,10 @@ content%}
     </div>
   </div>
 
-  <form class="pt-3" action="/gifts" method="GET">
+  <form class="pt-3 mb-5" action="/gifts" method="GET">
     <div class="input-group d-flex justify-content-center">
       <div class="form-group border" style="border-color: #f8c2ae !important">
-        <select class="form-control border-0" name="product_type">
+        <select class="form-control" name="product_type">
           <option>All</option>
           <option>Home</option>
           <option>Furniture</option>
@@ -152,17 +152,17 @@ content%}
       <button
         id="search-button"
         type="submit"
-        class="btn border-0 navigation-color"
+        class="btn border-0 navigation-color text-white"
         style="background-color: #f8c2ae"
       >
-        <strong>Search</strong>
+        Search
       </button>
     </div>
   </form>
 
-  <div class="row">
+  <div class="row justify-content-evenly gx-2 gy-5">
     {% for gift in gifts %} {% if gift[1] == 'Cash'%}
-    <div class="card mx-auto mt-3 mb-3" style="width: 15rem">
+    <div class="card" style="width: 15rem">
       <a target="_blank" rel="noopener noreferrer" href="#">
         <img
           class="card-img-top mx-auto"
@@ -188,10 +188,10 @@ content%}
     </div>
 
     {% else %}
-    <div class="card mx-auto mt-3 mb-3" style="width: 15rem">
+    <div class="card" style="width: 15rem">
       <a target="_blank" rel="noopener noreferrer" href="{{gift[3]}}">
         <img
-          class="card-img-top mx-auto"
+          class="card-img-top m-auto"
           src="{{gift[0]}}"
           alt="Card image cap"
         />

@@ -155,36 +155,36 @@ input {
 }
 /* ----------------------------- */
 /* Date CSS */
-input[type="date"]{
-  margin-left:3px;
-  padding-left:8px;
+input[type="date"] {
+  margin-left: 3px;
+  padding-left: 8px;
   text-align: end;
 }
-input[type="time"]{
-  text-align:left;
-  padding-left:30px !important;
+input[type="time"] {
+  text-align: left;
+  padding-left: 30px !important;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 1;
   display: block;
   background: url(../images/calendar.png) no-repeat;
-  width:20px;
+  width: 20px;
   background-size: cover;
   position: relative;
-  left:-83%;
-  margin-right:7px;
-  text-indent: -9999px !important;  
+  left: -83%;
+  margin-right: 7px;
+  text-indent: -9999px !important;
   border-width: thin;
 }
 input[type="time"]::-webkit-calendar-picker-indicator {
   opacity: 1;
   display: block;
-  width:20px;
+  width: 20px;
   background-size: cover;
   position: relative;
-  left:-97%;
-  margin-right:7px;
-  text-indent: -9999px !important;  
+  left: -97%;
+  margin-right: 7px;
+  text-indent: -9999px !important;
   border-width: thin;
 }
 
@@ -369,4 +369,9 @@ input[type="time"] {
 }
 .form-switch .form-check-input:focus {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#e3d1bd'/%3e%3c/svg%3e");
+}
+
+select option:hover {
+  background: #ff9500 -webkit-linear-gradient(bottom, #ff9500 0%, #ff9500 100%) !important;
+  color: #fff;
 }
