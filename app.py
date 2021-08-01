@@ -2,7 +2,7 @@
 import os
 import imghdr
 from smtplib import SMTPAuthenticationError
-
+import json
 from flask import Flask, flash, request, render_template, redirect, url_for, session, g,send_from_directory
 import seed
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -413,7 +413,7 @@ def guestslist():
                 else:
                     for guest in result:
                         try:
-                            cur.execute(('''SELECT Title,First_Name,Last_Name,Status FROM guestinfo WHERE guest_info_id = %s'''),(guest[0],))
+                            cur.execute(('''SELECT Title,First_Name,Last_Name,Status,Guest_ID FROM guestinfo WHERE guest_info_id = %s'''),(guest[0],))
                             result1 = cur.fetchall();
                             # print(result1)
                             for stat in result1:
@@ -439,7 +439,7 @@ def guestslist():
                             members : dict = {}
                             i = 0
                             for guestDetails in result1: 
-                                members[i] = {"Title": guestDetails[0], "First Name": guestDetails[1], "Last Name": guestDetails[2], "Status": guestDetails[3]}
+                                members[i] = {"Title": guestDetails[0], "First Name": guestDetails[1], "Last Name": guestDetails[2], "Status": guestDetails[3],"Guest_ID": guestDetails[4]}
                                 i += 1
                             Guests[guest[0]]={"street address": guest[1], "AptFloor": guest[2], "City": guest[3],"Country": guest[4],"StateProvince": guest[5],"ZipCode": guest[6],"Invited": guest[7],"email": guest[8],"phone": guest[9],"Total": guest[10], "members": members}
                         except:
@@ -457,7 +457,15 @@ def guestslist():
 
             except:
                 print("Failed to add guest/guests")
-            
+
+            Guests = json.dumps(Guests)
+       
+            Guests = json.loads(Guests)
+            # Json Data is passed to the page
+            # Went to Javascript 
+            # Used in tables 
+            # and Used as javascript Object
+
             return render_template("guestslist.html", Guests=Guests,status = status)
 
 
@@ -474,9 +482,11 @@ def guestslist():
                     firstName1 = request.form['inputFirstName1']
                     lastName1 = request.form['inputLastName1']
                     title1 = request.form['inputTitle1']
+
                     firstName2 = request.form['inputFirstName2']
                     lastName2 = request.form['inputLastName2']
                     title2 = request.form['inputTitle2']
+
                     
                 elif opt == "3":
                     firstName1 = request.form['inputFirstName1']
@@ -568,6 +578,121 @@ def guestslist():
                         flash("Error in Query", "danger")
                         return redirect(url_for("guestslist"))
 
+            elif(request.form['action'] == "UpdateRow"):
+                
+                streetAddress = request.form["inputStreetAddress"]
+                aptFloor = request.form["inputAptFloor"]
+                city = request.form["inputCity"]
+                stateProvince = request.form["inputStateProvince"]
+                zipCode = request.form["inputZipCode"]
+                country = request.form["inputCountry"]
+                email = request.form["inputEmail"]
+                invited = request.form["inputInvited"]
+                contactNumber = request.form["inputContactNumber"]
+                option = request.form['option']
+                total = request.form['inputTotal']
+                print(type(total))
+                title1 = ""
+                title2 = ""
+                title3 = ""
+                firstName1=""
+                firstName2=""
+                firstName3=""
+                lastName1 = ""
+                lastName2 = ""
+                lastName3 = ""
+                Guest_ID1 =""
+                Guest_ID2 =""
+                Guest_ID3 =""
+                Status1 = ""
+                Status2 = ""
+                Status3 = ""
+                print(option)
+                if total == "1":
+                    firstName1 = request.form['inputFirstName1']
+                    lastName1 = request.form['inputLastName1']
+                    title1 = request.form['inputTitle1']
+                    Guest_ID1 =  request.form["GuestID1"]
+                    Status1 = request.form['member1Status']
+
+                    
+                elif total == "2":
+                    firstName1 = request.form['inputFirstName1']
+                    lastName1 = request.form['inputLastName1']
+                    title1 = request.form['inputTitle1']
+                    Guest_ID1 =  request.form["GuestID1"]
+                    Status1 = request.form['member1Status']
+
+                    firstName2 = request.form['inputFirstName2']
+                    lastName2 = request.form['inputLastName2']
+                    title2 = request.form['inputTitle2']
+                    Guest_ID2 =  request.form["GuestID2"]
+                    Status2 = request.form['member2Status']
+
+                    
+                elif total == "3":
+                    firstName1 = request.form['inputFirstName1']
+                    lastName1 = request.form['inputLastName1']
+                    title1 = request.form['inputTitle1']
+                    Guest_ID1 =  request.form["GuestID1"]
+                    Status1 = request.form['member1Status']
+
+                    firstName2 = request.form['inputFirstName2']
+                    lastName2 = request.form['inputLastName2']
+                    title2 = request.form['inputTitle2']
+                    Guest_ID2 =  request.form["GuestID2"]
+                    Status2 = request.form['member2Status']
+
+                    firstName3 = request.form['inputFirstName3']
+                    lastName3 = request.form['inputLastName3']
+                    title3 = request.form['inputTitle3']
+                    Guest_ID3 =  request.form["GuestID3"]
+                    Status3 = request.form['member3Status']
+                    
+
+                try:
+                        cur = mysql.connection.cursor()
+                        cur.execute(
+                            '''UPDATE guests set street_address=%s,AptFloor=%s,City=%s,Country=%s,StateProvince=%s,ZipCode=%s,email=%s,phone=%s,Invited=%s,Total=%s where username = %s AND id=%s''',
+                            (streetAddress,aptFloor,city,country,stateProvince,zipCode,email,contactNumber,invited,total,session['username'],int(option)))
+                    
+
+                        # Maintain Guest Info table for using it when we deal with guest seats
+                        if total == "1":
+                            cur.execute(
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
+                                (title1,firstName1,lastName1,Status1,session['username'],int(Guest_ID1)))
+                        elif total == "2":
+                            cur.execute(
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
+                                (title1,firstName1,lastName1,Status1,session['username'],int(Guest_ID1)))
+                            cur.execute(
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
+                                (title2,firstName2,lastName2,Status2,session['username'],int(Guest_ID2)))
+                        elif total == "3":
+                            cur.execute(
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
+                                (title1,firstName1,lastName1,Status1,session['username'],int(Guest_ID1)))
+                            cur.execute(
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
+                                (title2,firstName2,lastName2,Status2,session['username'],int(Guest_ID2)))
+                            cur.execute(
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
+                                (title3,firstName3,lastName3,Status3,session['username'],int(Guest_ID3)))
+                        mysql.connection.commit()
+                        cur.close()
+                        flash("Guest Updated Successfully", "success")
+
+
+                        return redirect(url_for("guestslist"))
+
+                except Exception as e:
+                        print(e)
+                        flash("Error in Query", "danger")
+                        return redirect(url_for("guestslist"))
+
+                
+            
         ##--------------------------------------------------
 
 
