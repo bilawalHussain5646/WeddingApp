@@ -334,7 +334,7 @@ input[type="time"] {
     margin-left: 30vh !important;
   }
   #nav {
-    margin-left: 10vh !important;
+    align-content: center;
   }
 }
 @media (min-width: 1400px) {
@@ -345,7 +345,7 @@ input[type="time"] {
     margin-left: 50vh !important;
   }
 }
-@media (max-width: 1366px) {
+@media (max-width: 1399px) {
   .account {
     margin-left: 5vh !important;
   }

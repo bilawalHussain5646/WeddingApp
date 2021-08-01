@@ -401,12 +401,15 @@
             </div>
           </div>
           <form action="/guestslist" method="POST">
-            <input id="option" value="1" name="option" hidden />
+            <input type="text" id="option" name="option" hidden/>
+            <input type="text" id="total" name="inputTotal" />
+
             <div id="UpdateTab1">
               <div class="updatetab">
                 <div class="row mt-2">
                   <div class="col">
                     <div class="form-group label-floating">
+                      <input type="text" id="GuestID1" name ="GuestID1"/>
                       <label for="inputTitle1">Title</label>
                       <select
                         class="form-select"
@@ -459,6 +462,7 @@
                 <div class="row mt-2">
                   <div class="col">
                     <div class="form-group label-floating">
+                      <input type="text" id="GuestID2" name ="GuestID2"/>
                       <select
                         class="form-select"
                         name="inputTitle2"
@@ -503,6 +507,7 @@
                 <div class="row mt-2">
                   <div class="col">
                     <div class="form-group label-floating">
+                      <input type="text" id="GuestID3" name ="GuestID3"/>
                       <select
                         class="form-select"
                         name="inputTitle3"
@@ -552,7 +557,7 @@
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="invited"
+                    name="inputInvited"
                     id="updateOption1"
                     value="Definetly"
                   />
@@ -683,6 +688,7 @@
                 <div class="row mt-2 p-5">
                   <div class="col">
                     <div class="form-group label-floating">
+                      <input type="text" id="Guest_ID1" name="Guest_ID1" />
                       <label id="Member1"></label>
                     </div>
                   </div>
@@ -712,6 +718,7 @@
                 <div class="row mt-2 p-5 pt-2 pb-0">
                   <div class="col">
                     <div class="form-group label-floating">
+                      <input type="text" id="Guest_ID2" name="Guest_ID2" />
                       <label id="Member2"></label>
                     </div>
                   </div>
@@ -738,6 +745,7 @@
                 <div class="row mt-2 p-5">
                   <div class="col">
                     <div class="form-group label-floating">
+                      <input type="text" id="Guest_ID3" name="Guest_ID3" />
                       <label id="Member3"></label>
                     </div>
                   </div>
@@ -765,7 +773,7 @@
               <button
                 type="submit"
                 name="action"
-                value="AddRow"
+                value="UpdateRow"
                 class="btn text-white"
               >
                 Save
@@ -859,83 +867,7 @@
             </tr>
           </thead>
           <tbody id="tbody">
-            {% for Guest_key, Guest_info in Guests.items()%}
-
-            <tr>
-              <td scope="row">
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox for following text input"
-                  id="{{Guest_key}}"
-                  name="selectopt"
-                />
-              </td>
-
-              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
-              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
-              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}"
-              >
-                {%for k in Guests[Guest_key]['members'].items()%}
-                <div><label>{{k[1]["Status"]}}</label></div>
-                {%endfor%}
-              </td>
-
-              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
-              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
-              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
-                <div><label>{{Guests[Guest_key]['email']}}</label></div>
-
-                <label>{{Guests[Guest_key]['phone']}}</label>
-              </td>
-
-              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
-              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
-              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
-                {%for k in Guests[Guest_key]['members'].items()%}
-                <div>
-                  <label>
-                    {{k[1]["Title"]}} {{k[1]["First Name"]}} {{k[1]["Last Name"]}}
-                  </label>
-                </div>
-                {%endfor%}
-              </td>
-
-              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
-              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
-              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
-                <label>{{Guests[Guest_key]['Total']}}</label>
-              </td>
-              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
-              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
-              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
-                <label> {{Guests[Guest_key]['Invited']}} </label>
-              </td>
-              <td scope="row">
-                <form action="/guestslist" method="POST">
-                  <input name="DeleteID" value="{{Guest_key}}" hidden />
-
-                  <input
-                    name="guestNames"
-                    value="{{Guests[Guest_key]['members']}}"
-                    hidden
-                  />
-
-                  <button
-                    class="bg-white border-0"
-                    type="submit"
-                    name="action"
-                    value="DeleteRow"
-                  >
-                    <img
-                      src="static/images/delete-icon.png"
-                      style="width: 30px"
-                      alt=""
-                    />
-                  </button>
-                </form>
-              </td>
-            </tr>
-            {% endfor %}
+           <!-- Code in script section -->
           </tbody>
         </table>
       </div>
@@ -943,39 +875,163 @@
   </div>
 </div>
 {% endblock %} {% block scriptPage %}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+  var membersArray=[];
+  var StatusArray=[];
+  var temp =""
+  var temp2 =""
+  var Guests =   JSON.parse('{{ Guests | tojson | safe}}');
+  for (var key in Guests) {
+    if (Guests.hasOwnProperty(key)) {
+      
+      
+          for (var k in Guests[key]['members']){
+            temp = temp + `<div><label>`+Guests[key]['members'][k]['Title']+` `+Guests[key]['members'][k]['First Name']+` `+Guests[key]['members'][k]['Last Name']+`</label></div>`
+            temp2= temp2 + `<div><label>`+Guests[key]['members'][k]['Status']+`</label></div>`
+            //console.log(" loop is running")
+          }
+        
+          membersArray[key]= temp;
+          StatusArray[key]= temp2;
+          temp="<div>";
+          temp2="<div>";
+      
+        
+    }
+  } 
+  //console.log( membersArray)
+
+      
+    //console.log(Object.keys(Guests).length)     // This is tell you how many data is present 
+    dataLength = Object.keys(Guests).length;
+    //console.log(Guests[0])
+   
+
+    for (Guest_key in Guests){
+      $("tbody").append(`
+        <tr>
+          <td scope="row">
+            <input
+              type="checkbox"
+              aria-label="Checkbox for following text input"
+              id="`+Guest_key+`"
+              name="selectopt"
+            />
+          </td>
+
+          <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"  data-bs-id="`+Guest_key+`"
+          >
+           `+ StatusArray[Guest_key]+`
+          </td>
+
+          <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"  data-bs-id="`+Guest_key+`"
+          
+          >
+            <div><label>`+Guests[Guest_key]['email']+`</label></div>
+
+            <label>`+Guests[Guest_key]['phone']+`</label>
+          </td>
+
+          <td class="UpdateClass" scope="row"  data-bs-id="`+Guest_key+`"
+          
+          
+          data-bs-toggle="modal" data-bs-target="#UpdateModal" 
+          >
+            
+            <div>
+              `+ membersArray[Guest_key]+`
+            </div>
+          
+          </td>
+
+          <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"  data-bs-id="`+Guest_key+`"
+          
+          >
+            <label>`+Guests[Guest_key]['Total']+`</label>
+          </td>
+          <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" 
+          data-bs-id="`+Guest_key+`"
+          >
+            <label> `+Guests[Guest_key]['Invited']+` </label>
+          </td>
+          <td scope="row">
+            <form action="/guestslist" method="POST">
+              <input name="DeleteID" value="`+Guest_key+`" hidden />
+
+              <button
+                class="bg-white border-0"
+                type="submit"
+                name="action"
+                value="DeleteRow"
+              >
+                <img
+                  src="static/images/delete-icon.png"
+                  style="width: 30px"
+                  alt=""
+                />
+              </button>
+            </form>
+          </td>
+        </tr>
+      }
+      );
+      
+    `
+        )};  
+
+    // The above code is for showing guests 
   var classname = document.getElementsByClassName("UpdateClass");
   Array.from(classname).forEach(function (element) {
     element.addEventListener("click", function () {
       const section = element;
-
-
+      
 
       
       const guestID = section.getAttribute("data-bs-id");
-      const streetAddress = section.getAttribute("data-bs-streetAddress");
-      const AptFloor = section.getAttribute("data-bs-AptFloor");
-      const City = section.getAttribute("data-bs-City");
-      const Country = section.getAttribute("data-bs-Country");
-      const StateProvince = section.getAttribute("data-bs-StateProvince");
-      const ZipCode = section.getAttribute("data-bs-ZipCode");
-      const Invited = section.getAttribute("data-bs-Invited");
-      const email = section.getAttribute("data-bs-email");
-      const phone = section.getAttribute("data-bs-phone");
-      const Total = section.getAttribute("data-bs-Total");
-      console.log(Total);
+      const streetAddress = Guests[guestID]["street address"];
+      const AptFloor = Guests[guestID]["AptFloor"];
+      const City = Guests[guestID]["City"];
+      const Country = Guests[guestID]["Country"];
+      const StateProvince = Guests[guestID]["StateProvince"];
+      const ZipCode = Guests[guestID]["ZipCode"];
+      const Invited = Guests[guestID]["Invited"];
+      const email = Guests[guestID]["email"];
+      const phone = Guests[guestID]["phone"];
+      const Total = Guests[guestID]["Total"];
+
+      members_Title = []
+      members_FirstName = []
+      members_LastName = []
+      members_Status = []
+      members_ID = []
+      var i=0;
+      //console.log(Guests[guestID]['members'])
+      for (var k in Guests[guestID]['members']){
+        members_Title[i] = Guests[guestID]['members'][k]['Title']
+        members_FirstName[i]=Guests[guestID]['members'][k]['First Name']
+        members_LastName[i]=Guests[guestID]['members'][k]['Last Name']
+        members_Status[i]=Guests[guestID]['members'][k]['Status']
+        members_ID[i]=Guests[guestID]['members'][k]['Guest_ID']
+        i++;
+        
+      }
+      console.log(members_Title);
 
       
 
       // RSVP Below
-      /*
-      const rsvpnames = guestNames.split(",");
+      
+   
       let y = 1;
-      rsvpnames.forEach(function (name) {
-        document.getElementById("Member" + y).innerHTML = name;
+      for (i=0;i<Total;i++){
+        document.getElementById("Member" + y).innerHTML = members_Title[i] + " " + members_FirstName[i] + " "+ members_LastName[i];
+        document.getElementById("Member"+y+"Status").value = members_Status[i];
+        document.getElementById("Guest_ID"+y).value = members_ID[i];
+       
         y++;
-      });
+      }
+     
 
       let temp2 = 0;
       const updateRSVP = document.getElementsByClassName("updateRSVP");
@@ -987,9 +1043,9 @@
           element.style.display = "none";
         }
       });
-*/
-      // Address and City Country below
 
+      // Address and City Country below
+      document.getElementById("option").value = guestID;
       document.getElementById("StreetAddress").value = streetAddress;
       document.getElementById("AptFloor").value = AptFloor;
       document.getElementById("City").value = City;
@@ -997,6 +1053,7 @@
       document.getElementById("StateProvince").value = StateProvince;
       document.getElementById("ZipCode").value = ZipCode;
       document.getElementById("Email").value = email;
+      document.getElementById("total").value = Total;
 
       document.getElementById("ContactNumber").value = phone;
 
@@ -1007,18 +1064,19 @@
       } else {
         document.getElementById("updateOption2").checked = true;
       }
-/*
+
       // Guest Names below
-      const names = guestNames.split(",");
+   
       let x = 1;
-      names.forEach(function (name) {
-        let nameDetails = name.split(" ");
-        document.getElementById("Title" + x).value = nameDetails[0];
-        document.getElementById("FirstName" + x).value = nameDetails[1];
-        document.getElementById("LastName" + x).value = nameDetails[2];
+      for (i=0;i<Total;i++){
+        document.getElementById("Title" + x).value = members_Title[i];
+        document.getElementById("FirstName" + x).value = members_FirstName[i];
+        document.getElementById("LastName" + x).value = members_LastName[i];
+        document.getElementById("GuestID"+x).value = members_ID[i];
         x++;
-      });
-      console.log(names);
+      }
+      
+    
       const updatetab = document.getElementsByClassName("updatetab");
       let temp = 0;
 
@@ -1032,7 +1090,8 @@
         }
       });
       $("#UpdateModal").modal("show");
-*/
+
+
       // modal.find(".modal-title").text("New message to " + guestID);
     });
   });
@@ -1117,6 +1176,7 @@
       document.getElementById("UpdateTab2").style.display = "none";
       document.getElementById("UpdateTab3").style.display = "block";
     }
+    
   }
 </script>
 
