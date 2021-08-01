@@ -155,31 +155,34 @@ input {
 }
 /* ----------------------------- */
 /* Date CSS */
-
+input[type="date"]{
+  margin-left:3px;
+  padding-left:8px;
+  text-align: end;
+}
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 1;
   display: block;
-  text-indent: -9999px !important;
-  background: none;
+
+  background: url(../images/calendar.png) no-repeat;
+  width:20px;
+
+  background-size: cover;
+  position: relative;
+  left:-83%;
+  margin-right:7px;
+  text-indent: -9999px !important;  
   border-width: thin;
 }
 input[type="time"]::-webkit-calendar-picker-indicator {
   opacity: 1;
-  display: block;
+  background-image: none;
+  background-color:transparent !important; 
   text-indent: -9999px !important;
-  background: none;
+ 
   border-width: thin;
 }
-input::-webkit-datetime-edit {
-  position: relative;
-  left: 0;
-  right: 0;
-}
-input::-webkit-datetime-edit-fields-wrapper {
-  position: relative;
-  left: 0;
-  right: 0;
-}
+
 /* ---------------------------- */
 /* Common CSS */
 
@@ -352,7 +355,10 @@ input[type="time"] {
   color: #e3d1bd !important;
   box-shadow: none !important;
 }
-
+.form-check-input {
+  border-color: #e3d1bd !important;
+  box-shadow: none !important;
+}
 .form-switch .form-check-input {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#e3d1bd'/%3e%3c/svg%3e");
 }
