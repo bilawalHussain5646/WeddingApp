@@ -441,7 +441,7 @@ def guestslist():
                             for guestDetails in result1: 
                                 members[i] = {"Title": guestDetails[0], "First Name": guestDetails[1], "Last Name": guestDetails[2], "Status": guestDetails[3]}
                                 i += 1
-                            Guests[guest[0]]={'street address': guest[1], 'AptFloor': guest[2], 'City': guest[3],'Country': guest[4],'StateProvince': guest[5],'ZipCode': guest[6],'Invited': guest[7],'email': guest[8],'phone': guest[9],'Total': guest[10], 'members': members}
+                            Guests[guest[0]]={"street address": guest[1], "AptFloor": guest[2], "City": guest[3],"Country": guest[4],"StateProvince": guest[5],"ZipCode": guest[6],"Invited": guest[7],"email": guest[8],"phone": guest[9],"Total": guest[10], "members": members}
                         except:
                             print("ERROR IN 2nd Loop")
                 

@@ -871,19 +871,26 @@
                 />
               </td>
 
-              <td class="UpdateClass" scope="row">
+              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
+              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
+              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}"
+              >
                 {%for k in Guests[Guest_key]['members'].items()%}
                 <div><label>{{k[1]["Status"]}}</label></div>
                 {%endfor%}
               </td>
 
-              <td class="UpdateClass" scope="row">
+              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
+              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
+              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
                 <div><label>{{Guests[Guest_key]['email']}}</label></div>
 
                 <label>{{Guests[Guest_key]['phone']}}</label>
               </td>
 
-              <td class="UpdateClass" scope="row">
+              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
+              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
+              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
                 {%for k in Guests[Guest_key]['members'].items()%}
                 <div>
                   <label>
@@ -893,10 +900,14 @@
                 {%endfor%}
               </td>
 
-              <td class="UpdateClass" scope="row">
+              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
+              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
+              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
                 <label>{{Guests[Guest_key]['Total']}}</label>
               </td>
-              <td class="UpdateClass" scope="row">
+              <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-id="{{Guest_key}}" data-bs-streetAddress = "{{Guests[Guest_key]['street address']}}"
+              data-bs-AptFloor = "{{Guests[Guest_key]['AptFloor']}}" data-bs-email = "{{Guests[Guest_key]['email']}}" data-bs-phone = "{{Guests[Guest_key]['phone']}}" data-bs-City = "{{Guests[Guest_key]['City']}}" data-bs-Country = "{{Guests[Guest_key]['Country']}}"
+              data-bs-StateProvince = "{{Guests[Guest_key]['StateProvince']}}" data-bs-ZipCode = "{{Guests[Guest_key]['ZipCode']}}" data-bs-Invited = "{{Guests[Guest_key]['invited']}}" data-bs-Total = "{{Guests[Guest_key]['Total']}}">
                 <label> {{Guests[Guest_key]['Invited']}} </label>
               </td>
               <td scope="row">
@@ -934,30 +945,31 @@
 {% endblock %} {% block scriptPage %}
 
 <script>
-  /*var classname = document.getElementsByClassName("UpdateClass");
+  var classname = document.getElementsByClassName("UpdateClass");
   Array.from(classname).forEach(function (element) {
     element.addEventListener("click", function () {
       const section = element;
-      const guestID = section.getAttribute("data-guestID");
-      const guestNames = section.getAttribute("data-guestNames");
-      const streetAddress = section.getAttribute("data-streetAddress");
-      const AptFloor = section.getAttribute("data-AptFloor");
-      const City = section.getAttribute("data-City");
-      const Country = section.getAttribute("data-Country");
-      const StateProvince = section.getAttribute("data-StateProvince");
-      const ZipCode = section.getAttribute("data-ZipCode");
-      const Invited = section.getAttribute("data-Invited");
-      const email = section.getAttribute("data-email");
-      const phone = section.getAttribute("data-phone");
-      const status = section.getAttribute("data-status");
-      const Reply = section.getAttribute("data-Reply");
-      const Total = section.getAttribute("data-Total");
+
+
+
+      
+      const guestID = section.getAttribute("data-bs-id");
+      const streetAddress = section.getAttribute("data-bs-streetAddress");
+      const AptFloor = section.getAttribute("data-bs-AptFloor");
+      const City = section.getAttribute("data-bs-City");
+      const Country = section.getAttribute("data-bs-Country");
+      const StateProvince = section.getAttribute("data-bs-StateProvince");
+      const ZipCode = section.getAttribute("data-bs-ZipCode");
+      const Invited = section.getAttribute("data-bs-Invited");
+      const email = section.getAttribute("data-bs-email");
+      const phone = section.getAttribute("data-bs-phone");
+      const Total = section.getAttribute("data-bs-Total");
       console.log(Total);
 
-      var modal = $("#UpdateModal");
+      
 
       // RSVP Below
-
+      /*
       const rsvpnames = guestNames.split(",");
       let y = 1;
       rsvpnames.forEach(function (name) {
@@ -975,7 +987,7 @@
           element.style.display = "none";
         }
       });
-
+*/
       // Address and City Country below
 
       document.getElementById("StreetAddress").value = streetAddress;
@@ -995,7 +1007,7 @@
       } else {
         document.getElementById("updateOption2").checked = true;
       }
-
+/*
       // Guest Names below
       const names = guestNames.split(",");
       let x = 1;
@@ -1020,11 +1032,11 @@
         }
       });
       $("#UpdateModal").modal("show");
-
+*/
       // modal.find(".modal-title").text("New message to " + guestID);
     });
   });
-  */
+  
   document.getElementById("tab1").style.display = "block";
   hideInput2();
   hideInput3();
@@ -1080,7 +1092,7 @@
     }
   }
 
-/*  function showUpdateTab(option) {
+  function showUpdateTab(option) {
     if (option === "1") {
       document.getElementById("opt").value = "1";
       //hideInput2();
@@ -1105,7 +1117,7 @@
       document.getElementById("UpdateTab2").style.display = "none";
       document.getElementById("UpdateTab3").style.display = "block";
     }
-  }*/
+  }
 </script>
 
 {% endblock %}
