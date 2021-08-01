@@ -160,13 +160,15 @@ input[type="date"]{
   padding-left:8px;
   text-align: end;
 }
+input[type="time"]{
+  text-align:left;
+  padding-left:30px !important;
+}
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 1;
   display: block;
-
   background: url(../images/calendar.png) no-repeat;
   width:20px;
-
   background-size: cover;
   position: relative;
   left:-83%;
@@ -176,10 +178,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 input[type="time"]::-webkit-calendar-picker-indicator {
   opacity: 1;
-  background-image: none;
-  background-color:transparent !important; 
-  text-indent: -9999px !important;
- 
+  display: block;
+  width:20px;
+  background-size: cover;
+  position: relative;
+  left:-97%;
+  margin-right:7px;
+  text-indent: -9999px !important;  
   border-width: thin;
 }
 
