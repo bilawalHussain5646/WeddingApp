@@ -37,6 +37,7 @@ app.config['MAIL_ASCII_ATTACHMENTS'] = False
 # SECRET KEY
 
 app.secret_key = seed.secret_key
+token_key = URLSafeTimedSerializer(seed.secret_key)
 # token_key = URLSafeTimedSerializer(seed.secret_key)
 
 
@@ -691,7 +692,35 @@ def guestslist():
                         flash("Error in Query", "danger")
                         return redirect(url_for("guestslist"))
 
-                
+            elif (request.form['action']=="SendMessage"):
+                id = request.form['GuestID-Email']
+                email = request.form['recipient-email']
+                subject = request.form['recipient-subject']
+                message = request.form['recipient-message']
+                try:
+
+                    msg = Message(subject,
+                                sender="legendbest123@gmail.com", recipients=[email])
+                    token = token_key.dumps(id, salt='guest-id-token')
+                    link = url_for('confirmInvitation', token=token,_external=True)         
+                    cur = mysql.connection.cursor()
+                    cur.execute(
+                            '''UPDATE guestinfo set Status=%s where username = %s AND guest_info_id=%s''',
+                            ("Invited",session['username'],id,))
+                    invitationMessage = 'Click on the belove link : {}'.format(link)
+                    msg.body = message+"\n"+invitationMessage
+                    mail.send(msg)
+                    mysql.connection.commit()
+                    cur.close()
+                    flash("Invitation Sent", "success")
+                    print("Successfull")
+                    return redirect(url_for("login"))
+
+                except Exception as e:
+                    print(e)
+                    
+                    flash("Email or username not valid", "danger")
+                    return redirect(url_for("login"))
             
         ##--------------------------------------------------
 
@@ -701,15 +730,98 @@ def guestslist():
         return render_template("login.html")
 
 
+# Confirm Invitation Link
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     return response
 
+@app.route('/invitation<token>', methods=['GET'])
+def confirmInvitation(token):
+    try:
+        
+        GuestID = token_key.loads(token, salt='guest-id-token', max_age=30)
+        
+        cur = mysql.connection.cursor()
+        Guests : list = []
+        
+        cur.execute(
+            '''SELECT Title,First_Name,Last_Name, Status, Guest_ID FROM guestinfo where guest_info_id = %s''',
+            (GuestID,))
+        result = cur.fetchall()
+        if (result is None):
+            pass
+        else:
+            i=0
+            for guest in result:
+                Guests.append(guest)
+                i+=1
+            print(Guests)
+            mysql.connection.commit()
+            cur.close()
+            return render_template("invitation.html", Guests=Guests,Total = i)
+        return render_template("login.html")
+    
+    except SignatureExpired:
+        GuestID = token_key.loads(token, salt='guest-id-token')
+        cur = mysql.connection.cursor()
+        cur.execute('''UPDATE guestinfo SET Status = %s WHERE guest_info_id = %s''',
+                                ("Not Replied",GuestID,))
+        mysql.connection.commit()
+        cur.close()                       
+        return render_template("login.html")
+    except:
+        print("Error ...")
+        ## Error Page
+        return render_template("invitation.html", Guests=Guests)
+    
 
+        
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    return response
 
+@app.route('/invitation-response', methods=['POST'])
+def responseInvitation():
 
+    if (request.method == "POST"):
+        if request.form['action']=="save":
+            
+            total  = int(request.form['total'])
+            print(total)
+            index=1
+            try:
+                cur = mysql.connection.cursor()
+                while (index<=total):
+                    print("this is loop")
+                    status = "memberStatus"+ str(index)
+                    print(status)
+                    guestID = "Guest_ID"+ str(index)
+                    print(guestID)
 
+                    gID = int(request.form[guestID])
+                    print(gID)
+                    gStatus = request.form[status]
+                    
+                    print(gStatus)
+                    cur.execute('''UPDATE guestinfo SET Status = %s WHERE Guest_ID = %s''',
+                                (gStatus,gID,))
+                    index+=1   
+                    
+                mysql.connection.commit()
+                flash("Invitation Accepted", "success")
+                
+                cur.close()
+                return render_template("invitation.html")
+                
+            except:
+                flash("Error in Update Status")
+
+            return redirect(url_for("index"))
+    else:
+        ## Error page here
+        pass 
 
 
 # Items Adding To Cart

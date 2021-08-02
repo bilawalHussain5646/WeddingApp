@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Invitation</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link href="static/css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./static/images/favicon.png" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <center class="my-5">
+      <a href="/login">
+        <img
+          src="static/images/logo-latest.png"
+          style="width: 200px"
+          alt="Logo"
+          class="logo-image"
+        />
+      </a>
+    </center>
+    <div class="w-100">
+      <div
+        style="
+          background-size: cover;
+          background-position: center;
+          border: 7px solid #cccccc;
+          border-bottom: 0px;
+          border-left: 0px;
+          border-right: 0px;
+        "
+      >
+        <div class="row" style="height: 90vh">
+          <div
+            class="col-lg-5"
+            style="
+              background: url('../static/images/bg-heading-02.png') no-repeat;
+              background-size: cover;
+              background-position: center;
+              border-right: 7px solid #cccccc;
+            "
+          ></div>
+          <div class="col-lg-6 container">
+           
+            
+            <form action="/invitation-response" method="POST">
+              
+              
+              {% for guest in Guests %}
+              
+              <div class="row mt-2 p-5">
+                <div class="col">
+                  <div class="form-group label-floating">
+                    <input type="text" value="{{guest[4]}}" name="Guest_ID{{loop.index}}" />
+                    <label name="Member{{loop.index}}">{{guest[0]+' '+ guest[1]+' '+guest[2]}}</label>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="form-group label-floating">
+                    <select
+                      class="form-select"
+                  
+                      name="memberStatus{{loop.index}}"
+                      aria-label="Default select example"
+                    >
+                      <option value="Attending">Attending</option>
+                      <option value="Not Attending">Not Attending</option>
+                      <option value="Maybe">Maybe</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              
+              {% endfor %}
+              
+              <input type="text" name="total" value="{{Total}}">
+              <div class="p-t-30">
+                <button
+                  id="loginBtn"
+                  class="auth-login-button"
+                  style="width: 100%"
+                  name = "action"
+                  value = "save"
+                  type="submit"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+
+
+        
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+    <!-- Main JS-->
+
+   
+  </body>
+</html>
