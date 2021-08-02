@@ -57,7 +57,7 @@
               <div class="row mt-2 p-5">
                 <div class="col">
                   <div class="form-group label-floating">
-                    <input type="text" value="{{guest[4]}}" name="Guest_ID{{loop.index}}" />
+                    <input type="text" value="{{guest[4]}}" name="Guest_ID{{loop.index}}" hidden/>
                     <label name="Member{{loop.index}}">{{guest[0]+' '+ guest[1]+' '+guest[2]}}</label>
                   </div>
                 </div>
@@ -81,7 +81,7 @@
               
               {% endfor %}
               
-              <input type="text" name="total" value="{{Total}}">
+              <input type="text" name="total" value="{{Total}}" hidden>
               <div class="p-t-30">
                 <button
                   id="loginBtn"
