@@ -299,6 +299,7 @@ input:focus {
 .nav-item {
   margin: 10px 15px 10px 15px !important;
   padding: 0px 2px !important;
+  white-space: nowrap !important;
 }
 .nav-link {
   color: rgb(166, 166, 166) !important;
@@ -308,7 +309,16 @@ input:focus {
 
   border-radius: 15px;
 }
-
+@media screen and (max-width: 1186px) and (min-width: 991px) {
+  .disable-select {
+    width: 180px;
+  }
+  .nav-item {
+    margin: 2px 5px 2px 5px !important;
+    padding: 0px 2px !important;
+    white-space: nowrap !important;
+  }
+}
 input[type="button"],
 button {
   background-color: #e3d1bd !important;
@@ -329,29 +339,13 @@ input[type="time"] {
   border: 2px solid #ceb08d !important;
   border-radius: 5px;
 } */
-@media (min-width: 1600px) {
-  .account {
-    margin-left: 30vh !important;
-  }
-  #nav {
-    align-content: center;
-  }
-}
-@media (min-width: 1400px) {
-  .account {
-    margin-left: 20vh !important;
-  }
-  #nav {
-    margin-left: 50vh !important;
-  }
-}
-@media (max-width: 1399px) {
-  .account {
-    margin-left: 5vh !important;
-  }
-  #nav {
-    margin-left: 40vh !important;
-  }
+.disable-select {
+  visibility: hidden;
+  user-select: none !important; /* supported by Chrome and Opera */
+  -webkit-user-select: none !important; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 .form-check-input:checked {
