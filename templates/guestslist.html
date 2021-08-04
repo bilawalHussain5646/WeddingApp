@@ -8,15 +8,15 @@
   <div class="row">
     <div class="col d-flex justify-content-end">
      
-      <button type="button" class="border-0 bg-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button"  class="border-0 bg-white" data-bs-toggle="modal" data-bs-target="#exampleModal" >
         Add Guests
       </button>
       <button class="border-0 bg-white">Print</button>
     </div>
   </div>
-  
+  <!-- Add Guest Modal -->
   <div
-  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="false" aria-hidden="true"
   >
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -348,13 +348,15 @@
     </div>
   </div>
 
+  <!-- Update Modal  -->
+
   <div
     class="modal fade"
     id="UpdateModal"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true"
+    aria-hidden="true" data-bs-backdrop="false"
   >
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -402,14 +404,14 @@
           </div>
           <form action="/guestslist" method="POST">
             <input type="text" id="option" name="option" hidden/>
-            <input type="text" id="total" name="inputTotal" />
+            <input type="text" id="total" name="inputTotal" hidden/>
 
             <div id="UpdateTab1">
               <div class="updatetab">
                 <div class="row mt-2">
                   <div class="col">
                     <div class="form-group label-floating">
-                      <input type="text" id="GuestID1" name ="GuestID1"/>
+                      <input type="text" id="GuestID1" name ="GuestID1" hidden/>
                       <label for="inputTitle1">Title</label>
                       <select
                         class="form-select"
@@ -462,7 +464,7 @@
                 <div class="row mt-2">
                   <div class="col">
                     <div class="form-group label-floating">
-                      <input type="text" id="GuestID2" name ="GuestID2"/>
+                      <input type="text" id="GuestID2" name ="GuestID2" hidden/>
                       <select
                         class="form-select"
                         name="inputTitle2"
@@ -507,7 +509,7 @@
                 <div class="row mt-2">
                   <div class="col">
                     <div class="form-group label-floating">
-                      <input type="text" id="GuestID3" name ="GuestID3"/>
+                      <input type="text" id="GuestID3" name ="GuestID3" hidden/>
                       <select
                         class="form-select"
                         name="inputTitle3"
@@ -568,7 +570,7 @@
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="invited"
+                    name="inputInvited"
                     id="updateOption2"
                     value="Maybe"
                   />
@@ -688,7 +690,7 @@
                 <div class="row mt-2 p-5">
                   <div class="col">
                     <div class="form-group label-floating">
-                      <input type="text" id="Guest_ID1" name="Guest_ID1" />
+                      <input type="text" id="Guest_ID1" name="Guest_ID1" hidden/>
                       <label id="Member1"></label>
                     </div>
                   </div>
@@ -718,7 +720,7 @@
                 <div class="row mt-2 p-5 pt-2 pb-0">
                   <div class="col">
                     <div class="form-group label-floating">
-                      <input type="text" id="Guest_ID2" name="Guest_ID2" />
+                      <input type="text" id="Guest_ID2" name="Guest_ID2" hidden/>
                       <label id="Member2"></label>
                     </div>
                   </div>
@@ -745,7 +747,7 @@
                 <div class="row mt-2 p-5">
                   <div class="col">
                     <div class="form-group label-floating">
-                      <input type="text" id="Guest_ID3" name="Guest_ID3" />
+                      <input type="text" id="Guest_ID3" name="Guest_ID3" hidden/>
                       <label id="Member3"></label>
                     </div>
                   </div>
@@ -788,6 +790,43 @@
     </div>
   </div>
 
+
+  <!-- Send Message Modal -->
+
+  <div class="modal fade" id="MessageModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="false" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Message Guests</h5>
+        </div>
+        <form action="/guestslist" method="POST">
+        <div class="modal-body">
+          
+            <input type="text" id="GuestID-Email" name="GuestID-Email" hidden/>
+            <div class="mb-3">
+              <label for="recipient-email" class="col-form-label">To:</label>
+              <input type="text" class="form-control" id="recipient-email" name="recipient-email" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-subject" class="col-form-label">Subject:</label>
+              <input type="text" placeholder="Ex: Reminder-title"class="form-control" id="recipient-subject" name="recipient-subject">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-message" class="col-form-label">Message:</label>
+              <textarea placeholder="Enter your message"class="form-control" id="recipient-message" name="recipient-message"></textarea>
+            </div>
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" name="action" value="SendMessage" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Showing Status Portion -->
   <div class="row mt-5" style="border-bottom: 1px solid #cccccc"></div>
   <div
     class="row content-center"
@@ -860,7 +899,9 @@
               <th scope="col">
                 <h4>Invited?</h4>
               </th>
-
+              <th scope="col">
+                <h4>Message</h4>
+              </th>
               <th scope="col">
                 <h4>Cancel</h4>
               </th>
@@ -877,7 +918,9 @@
 {% endblock %} {% block scriptPage %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
   var membersArray=[];
+  var invitedDisplay=[];
   var StatusArray=[];
   var temp =""
   var temp2 =""
@@ -891,7 +934,60 @@
             temp2= temp2 + `<div><label>`+Guests[key]['members'][k]['Status']+`</label></div>`
             //console.log(" loop is running")
           }
-        
+          if (Guests[key]['Invited']=="Definetly"){
+            invitedDisplay[key] = `<div class="col">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="invited`+key+`"
+
+                id="option1"
+                value="Definetly"
+                checked="checked"
+                disabled
+              />
+              <label class="form-check-label" for="option1"
+                >Definetly</label
+              >
+
+              <input
+                class="form-check-input"
+                type="radio"
+                name="invited`+key+`"
+
+                id="option2"
+                value="Maybe"
+                disabled
+              />
+              <label class="form-check-label px-2" for="option2">Maybe</label>
+            </div>`
+          }
+          else{
+            invitedDisplay[key] = `<div class="col">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="invited`+key+`"
+                id="option1"
+                value="Definetly"
+                disabled
+              />
+              <label class="form-check-label" for="option1"
+                >Definetly</label
+              >
+
+              <input
+                class="form-check-input"
+                type="radio"
+                name="invited`+key+`"
+                id="option2"
+                value="Maybe"
+                checked="checked"
+                disabled
+              />
+              <label class="form-check-label px-2" for="option2">Maybe</label>
+            </div>`
+          }
           membersArray[key]= temp;
           StatusArray[key]= temp2;
           temp="<div>";
@@ -953,7 +1049,19 @@
           <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" 
           data-bs-id="`+Guest_key+`"
           >
-            <label> `+Guests[Guest_key]['Invited']+` </label>
+            `+invitedDisplay[Guest_key]+`
+          </td>
+          <td class= "Email-ID" scope="row" class="bg-white border-0"
+          data-bs-toggle="modal" data-bs-target="#MessageModal"  data-bs-id="`+Guest_key+`">
+            
+              
+                <img
+                  src="static/images/message-icon.png"
+                  style="width: 30px"
+                  alt=""
+                />
+            
+         
           </td>
           <td scope="row">
             <form action="/guestslist" method="POST">
@@ -981,6 +1089,23 @@
         )};  
 
     // The above code is for showing guests 
+    
+  var emailName = document.getElementsByClassName("Email-ID");
+
+  Array.from(emailName).forEach(function (element) {
+    element.addEventListener("click", function () {
+      const section = element;
+      const guestID = section.getAttribute("data-bs-id");
+      const guestEmail = Guests[guestID]['email'];
+      //console.log(guestEmail)
+      document.getElementById("recipient-email").value = guestEmail;
+      document.getElementById("GuestID-Email").value = guestID;
+
+    })
+    });
+
+      
+      
   var classname = document.getElementsByClassName("UpdateClass");
   Array.from(classname).forEach(function (element) {
     element.addEventListener("click", function () {

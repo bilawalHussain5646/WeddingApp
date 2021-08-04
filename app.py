@@ -37,6 +37,7 @@ app.config['MAIL_ASCII_ATTACHMENTS'] = False
 # SECRET KEY
 
 app.secret_key = seed.secret_key
+token_key = URLSafeTimedSerializer(seed.secret_key)
 # token_key = URLSafeTimedSerializer(seed.secret_key)
 
 
@@ -103,8 +104,8 @@ def process_registration():
         person.password = request.form["inputPassword"]
         person.contactNumber = request.form["inputContact"]
 
-        print(person.dateOfMarriage+" "+person.endDateOfMarriage)
-        print(person.Location+" "+person.Address)
+        #print(person.dateOfMarriage+" "+person.endDateOfMarriage)
+        #print(person.Location+" "+person.Address)
         hashedPassword = generate_password_hash(person.password)
         try:
 
@@ -243,7 +244,32 @@ def after_request(response):
 def dashboard():
     if 'username' in session:
         g.username = session['username']
-        return render_template("dashboard.html", session=session)
+
+        cur = mysql.connection.cursor()
+       
+        
+        cur.execute(
+            '''SELECT Status,invitation, Guest_ID FROM guestinfo where username = %s''',
+            (g.username,))
+        result = cur.fetchall()
+        mysql.connection.commit()
+        cur.close()
+
+
+        TotalInvitations = 0
+        TotalAttending = 0
+        TotalGuests = 0
+
+
+        for guest in result:
+            if guest[0] == "Attending":
+                TotalAttending+=1
+            if guest[1] == "Invited":
+                TotalInvitations+=1
+            TotalGuests+=1
+            
+
+        return render_template("dashboard.html", session=session,TotalInvitations=TotalInvitations,TotalAttending=TotalAttending,TotalGuests=TotalGuests)
     else:
         flash("Session Ended", "warning")
         return render_template("login.html")
@@ -401,7 +427,7 @@ def guestslist():
             try:
                 cur = mysql.connection.cursor()
 
-                # vendor details
+     
                 cur.execute(
                     '''SELECT id,street_address,AptFloor,City,Country,StateProvince,ZipCode,Invited,email,phone,Total FROM guests where username = %s''',
                     (session['username'],))
@@ -413,7 +439,7 @@ def guestslist():
                 else:
                     for guest in result:
                         try:
-                            cur.execute(('''SELECT Title,First_Name,Last_Name,Status,Guest_ID FROM guestinfo WHERE guest_info_id = %s'''),(guest[0],))
+                            cur.execute(('''SELECT Title,First_Name,Last_Name,Status,Guest_ID,invitation FROM guestinfo WHERE guest_info_id = %s'''),(guest[0],))
                             result1 = cur.fetchall();
                             # print(result1)
                             for stat in result1:
@@ -429,7 +455,7 @@ def guestslist():
                                 if stat[3] == "Maybe":
                                     Maybe = Maybe + 1
                                 
-                                if stat[3] == "Invited":
+                                if stat[5] == "Invited":
                                     Invited = Invited +  1 
                                 
                                 if stat[3] == "Not Invited":
@@ -591,7 +617,7 @@ def guestslist():
                 contactNumber = request.form["inputContactNumber"]
                 option = request.form['option']
                 total = request.form['inputTotal']
-                print(type(total))
+                #print(type(total))
                 title1 = ""
                 title2 = ""
                 title3 = ""
@@ -607,7 +633,7 @@ def guestslist():
                 Status1 = ""
                 Status2 = ""
                 Status3 = ""
-                print(option)
+                #print(option)
                 if total == "1":
                     firstName1 = request.form['inputFirstName1']
                     lastName1 = request.form['inputLastName1']
@@ -659,26 +685,56 @@ def guestslist():
 
                         # Maintain Guest Info table for using it when we deal with guest seats
                         if total == "1":
+                            invitation1 = ""
+                            if (Status1=="Not Invited"):
+                                invitation1 = "Not Invited"
+                            else:
+                                invitation1 = "Invited"
                             cur.execute(
-                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
-                                (title1,firstName1,lastName1,Status1,session['username'],int(Guest_ID1)))
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s,invitation=%s WHERE username = %s AND Guest_ID = %s",
+                                (title1,firstName1,lastName1,Status1,invitation1,session['username'],int(Guest_ID1)))
                         elif total == "2":
+                            invitation1 = ""
+                            invitation2 = ""
+                            if (Status1=="Not Invited"):
+                                invitation1 = "Not Invited"
+                            else:
+                                invitation1 = "Invited"
                             cur.execute(
-                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
-                                (title1,firstName1,lastName1,Status1,session['username'],int(Guest_ID1)))
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s,invitation=%s WHERE username = %s AND Guest_ID = %s",
+                                (title1,firstName1,lastName1,Status1,invitation1,session['username'],int(Guest_ID1)))
+                            if (Status2=="Not Invited"):
+                                invitation2 = "Not Invited"
+                            else:
+                                invitation2 = "Invited"
                             cur.execute(
-                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
-                                (title2,firstName2,lastName2,Status2,session['username'],int(Guest_ID2)))
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s,invitation=%s WHERE username = %s AND Guest_ID = %s",
+                                (title2,firstName2,lastName2,Status2,invitation2,session['username'],int(Guest_ID2)))
                         elif total == "3":
+                            invitation1 = ""
+                            invitation2 = ""
+                            invitation3 = ""
+                            if (Status1=="Not Invited"):
+                                invitation1 = "Not Invited"
+                            else:
+                                invitation1 = "Invited"
                             cur.execute(
-                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
-                                (title1,firstName1,lastName1,Status1,session['username'],int(Guest_ID1)))
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s,invitation=%s WHERE username = %s AND Guest_ID = %s",
+                                (title1,firstName1,lastName1,Status1,invitation1,session['username'],int(Guest_ID1)))
+                            if (Status2=="Not Invited"):
+                                invitation2 = "Not Invited"
+                            else:
+                                invitation2 = "Invited"
                             cur.execute(
-                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
-                                (title2,firstName2,lastName2,Status2,session['username'],int(Guest_ID2)))
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s,invitation=%s WHERE username = %s AND Guest_ID = %s",
+                                (title2,firstName2,lastName2,Status2,invitation2,session['username'],int(Guest_ID2)))
+                            if (Status3=="Not Invited"):
+                                invitation3 = "Not Invited"
+                            else:
+                                invitation3 = "Invited"
                             cur.execute(
-                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s WHERE username = %s AND Guest_ID = %s",
-                                (title3,firstName3,lastName3,Status3,session['username'],int(Guest_ID3)))
+                                "UPDATE guestInfo set Title=%s,First_Name=%s,Last_Name=%s,Status=%s,invitation=%s WHERE username = %s AND Guest_ID = %s",
+                                (title3,firstName3,lastName3,Status3,invitation3,session['username'],int(Guest_ID3)))
                         mysql.connection.commit()
                         cur.close()
                         flash("Guest Updated Successfully", "success")
@@ -691,7 +747,35 @@ def guestslist():
                         flash("Error in Query", "danger")
                         return redirect(url_for("guestslist"))
 
-                
+            elif (request.form['action']=="SendMessage"):
+                id = request.form['GuestID-Email']
+                email = request.form['recipient-email']
+                subject = request.form['recipient-subject']
+                message = request.form['recipient-message']
+                try:
+
+                    msg = Message(subject,
+                                sender="legendbest123@gmail.com", recipients=[email])
+                    token = token_key.dumps(id, salt='guest-id-token')
+                    link = url_for('confirmInvitation', token=token,_external=True)         
+                    cur = mysql.connection.cursor()
+                    cur.execute(
+                            '''UPDATE guestinfo set Status=%s,invitation=%s where username = %s AND guest_info_id=%s''',
+                            ("Invited","Invited",session['username'],id,))
+                    invitationMessage = 'Click on the belove link : {}'.format(link)
+                    msg.body = message+"\n"+invitationMessage
+                    mail.send(msg)
+                    mysql.connection.commit()
+                    cur.close()
+                    flash("Invitation Sent", "success")
+                    print("Successfull")
+                    return redirect(url_for("login"))
+
+                except Exception as e:
+                    print(e)
+                    
+                    flash("Email or username not valid", "danger")
+                    return redirect(url_for("login"))
             
         ##--------------------------------------------------
 
@@ -701,15 +785,98 @@ def guestslist():
         return render_template("login.html")
 
 
+# Confirm Invitation Link
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     return response
 
+@app.route('/invitation<token>', methods=['GET'])
+def confirmInvitation(token):
+    try:
+        
+        GuestID = token_key.loads(token, salt='guest-id-token', max_age=30)
+        
+        cur = mysql.connection.cursor()
+        Guests : list = []
+        
+        cur.execute(
+            '''SELECT Title,First_Name,Last_Name, Status, Guest_ID FROM guestinfo where guest_info_id = %s''',
+            (GuestID,))
+        result = cur.fetchall()
+        if (result is None):
+            pass
+        else:
+            i=0
+            for guest in result:
+                Guests.append(guest)
+                i+=1
+            #print(Guests)
+            mysql.connection.commit()
+            cur.close()
+            return render_template("invitation.html", Guests=Guests,Total = i)
+        return render_template("login.html")
+    
+    except SignatureExpired:
+        GuestID = token_key.loads(token, salt='guest-id-token')
+        cur = mysql.connection.cursor()
+        cur.execute('''UPDATE guestinfo SET Status = %s WHERE guest_info_id = %s''',
+                                ("Not Replied",GuestID,))
+        mysql.connection.commit()
+        cur.close()                       
+        return render_template("login.html")
+    except:
+        print("Error ...")
+        ## Error Page
+        return render_template("invitation.html", Guests=Guests)
+    
 
+        
+@app.after_request
+def after_request(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    return response
 
+@app.route('/invitation-response', methods=['POST'])
+def responseInvitation():
 
+    if (request.method == "POST"):
+        if request.form['action']=="save":
+            
+            total  = int(request.form['total'])
+            #print(total)
+            index=1
+            try:
+                cur = mysql.connection.cursor()
+                while (index<=total):
+                    #print("this is loop")
+                    status = "memberStatus"+ str(index)
+                    #print(status)
+                    guestID = "Guest_ID"+ str(index)
+                    #print(guestID)
 
+                    gID = int(request.form[guestID])
+                    #print(gID)
+                    gStatus = request.form[status]
+                    
+                    #print(gStatus)
+                    cur.execute('''UPDATE guestinfo SET Status = %s WHERE Guest_ID = %s''',
+                                (gStatus,gID,))
+                    index+=1   
+                    
+                mysql.connection.commit()
+                flash("Invitation Accepted", "success")
+                
+                cur.close()
+                return render_template("invitation.html")
+                
+            except:
+                flash("Error in Update Status")
+
+            return redirect(url_for("index"))
+    else:
+        ## Error page here
+        pass 
 
 
 # Items Adding To Cart
