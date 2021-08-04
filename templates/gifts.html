@@ -135,20 +135,26 @@ content%}
 
   <form class="pt-3 mb-5" action="/gifts" method="GET">
     <div class="input-group d-flex justify-content-center">
-      <div class="form-group border" style="border-color: #f8c2ae !important">
-        <select class="form-control" name="product_type">
-          <option>All</option>
-          <option>Home</option>
-          <option>Furniture</option>
-          <option>Bed & Bath</option>
-          <option>Kitchen</option>
-          <option>Tabletop</option>
-          <option>Electronic</option>
-          <option>Gift Cards</option>
-          <option>Cash Funds</option>
+      <span class="form-group border" style="border-color: #f8c2ae !important">
+        <select
+          class="form-control mx-auto"
+          name="product_type"
+          onfocus="this.size=15;"
+          onblur="this.size=0;"
+          onchange="this.size=1; this.blur();"
+          style="border: none !important"
+        >
+          <option class="px-2" value="all">All</option>
+          <option class="px-2" value="home">Home</option>
+          <option class="px-2" value="furniture">Furniture</option>
+          <option class="px-2" value="bed & bath">Bed & Bath</option>
+          <option class="px-2" value="kitchen">Kitchen</option>
+          <option class="px-2" value="tabletop">Tabletop</option>
+          <option class="px-2" value="electronic">Electronic</option>
+          <option class="px-2" value="gift cards">Gift Cards</option>
+          <option class="px-2" value="cash funds">Cash Funds</option>
         </select>
-      </div>
-
+      </span>
       <button
         id="search-button"
         type="submit"
