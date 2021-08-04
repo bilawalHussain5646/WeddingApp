@@ -795,7 +795,7 @@ def after_request(response):
 def confirmInvitation(token):
     try:
         
-        GuestID = token_key.loads(token, salt='guest-id-token', max_age=30)
+        GuestID = token_key.loads(token, salt='guest-id-token', max_age=172800)
         
         cur = mysql.connection.cursor()
         Guests : list = []
