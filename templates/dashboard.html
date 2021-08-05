@@ -8,10 +8,10 @@
           <div class="col-lg-12 px-5 py-3">
             <div class="row" style="border-bottom: 1px solid black">
               
-              <div class="offset-3 col-5 ">Your Wedding Details</div>
-              <div class="col-4 text-end">
+              <div class="offset-3 col-6 dash">Your Wedding Details</div>
+              <div class="col-3 text-end">
                 <a
-                  style="color: #b98e7f; text-decoration: none"
+                  style="color: #ceb08d; text-decoration: none"
                   href="/profile?setting=2"
                   value="0"
                   >Edit</a
@@ -23,23 +23,17 @@
         <div class="row px-5 py-3">
           <div class="col-6 mt-1">
             <div class="d-flex justify-content-center">
+              <img src="static/images/calendar.png" style="
+              width: 30px;
+              height: 25px;" class="mt-3 me-2 rounded float-start" alt="...">
               <div
-                style="
-                  width: 25px;
-                  height: 30px;
-                  background: url('static/images/calendar.png') no-repeat;
-                  background-size: 100%;
-                "
-              ></div>
-              <span
-                class="mx-2"
-                style="font-family: SemiBold; color: rgb(166, 166, 166)"
-                >Wedding Date</span
-              >
+                class="mx-2 dash"
+                style=" color: rgb(166, 166, 166)"
+                >Wedding Date</div>
             </div>
             <div
-              class="d-flex justify-content-center"
-              style="color: rgb(166, 166, 166)"
+              class=" d-flex justify-content-center"
+              style="color: rgb(166, 166, 166); margin-bottom: 2vh ;"
             >
               <label>{{session['dateOfMarriage']}}</label>
             </div>
@@ -47,18 +41,17 @@
           <div class="col-6" style="font-family: Heading">
             <div class="d-flex justify-content-end">
               <div
-                class="col-1"
+                class="col-1 mt-3 mx-3"
                 style="
-                  width: 25px;
-                  height: 35px;
+                  width: 27px;
+                  height: 30px;
                   background: url('static/images/location.png') no-repeat;
-                  background-size: cover;
-                  background-position: center;
+                  background-size: 100% 100%;
                 "
               ></div>
               <span
-                class="mx-2"
-                style="font-family: SemiBold; color: rgb(166, 166, 166)"
+                class="mx-2 dash"
+                style=" color: rgb(166, 166, 166)"
                 >{{session['Address']}}</span
               >
             </div>
@@ -75,13 +68,13 @@
                 color: rgb(166, 166, 166);
               "
             >
-              <div class="col-9">Wedding RSVPs Collected  ({{TotalAttending}} of {{TotalInvitations}})</div>
+              <div class="col-9 dash">Wedding RSVPs Collected  ({{TotalAttending}} of {{TotalInvitations}})</div>
               <div class="col-3 text-end">
                 <a
-                  style="color: #b98e7f; text-decoration: none"
+                  style="color: #ceb08d; text-decoration: none; border-bottom: 2px solid #ceb08d"
                   href="/profile?setting=2"
                   value="0"
-                  >Edit</a
+                  >View</a
                 >
               </div>
             </div>
@@ -96,13 +89,13 @@
                 color: rgb(166, 166, 166);
               "
             >
-              <div class="col-9">Card Drafts Started (3)</div>
+              <div class="col-9 dash">Card Drafts Started (3)</div>
               <div class="col-3 text-end">
                 <a
-                  style="color: #b98e7f; text-decoration: none"
+                  style="color: #ceb08d; text-decoration: none; border-bottom: 2px solid #ceb08d"
                   href="/profile?setting=2"
                   value="0"
-                  >Edit</a
+                  >View</a
                 >
               </div>
             </div>
@@ -117,13 +110,13 @@
                 color: rgb(166, 166, 166);
               "
             >
-              <div class="col-9">Gifts Added({{session['registries']}})</div>
+              <div class="col-9 dash">Gifts Added({{session['registries']}})</div>
               <div class="col-3 mx-0 text-end">
                 <a
-                  style="color: #b98e7f; text-decoration: none"
+                  style="color: #ceb08d; text-decoration: none; border-bottom: 2px solid #ceb08d"
                   href="/profile?setting=2"
                   value="0"
-                  >Edit</a
+                  >View</a
                 >
               </div>
             </div>
@@ -138,13 +131,14 @@
                 color: rgb(166, 166, 166);
               "
             >
-              <div class="col-9">Guests Added ({{TotalGuests}})</div>
+              <div class="col-9 dash ">Guests Added ({{TotalGuests}})</div>
               <div class="col-3 text-end">
                 <a
-                  style="color: #b98e7f; text-decoration: none"
+                  style="color: #ceb08d; text-decoration: none; border-bottom: 2px solid #ceb08d"
                   href="/profile?setting=2"
                   value="0"
-                  >Edit</a
+                  
+                  >View</a
                 >
               </div>
             </div>
@@ -160,14 +154,14 @@
               "
             >
           
-                <div class="col-6">Website Visible ?</div>
+                <div class="col-6 dash">Website Visible ?</div>
               
                 <div class="col-2 d-flex justify-content-end mb-3">
                     <div class="form-check form-switch " >
                       <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>                     
                     </div>
               </div>
-                <div class="col-6">Preview Website</div>
+                <div class="col-6 dash">Preview Website</div>
                 <div class="col-2 d-flex justify-content-end">
                
                   <a href="/profile?setting=2" style="text-decoration: none;">
@@ -187,32 +181,62 @@
              <div class="col-lg-9">
                
              </div>
-             <button class="col-lg-3 btn text-white" style="border: 1px solid #ceb08d
-;             background-color:#e4d3c0
-             "> Share</button></div>
+             <button class="col-lg-3 btn btn-primary text-white share fs-6" style="background-color:#e4d3c0;
+             border: 5px solid #854906
+             "data-bs-toggle="modal" href="#exampleModalToggle" role="button"> Share</button></div>
             </div>
+            <div class="modal fade "data-bs-backdrop="false" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered " >
+                <div class="modal-content"style=" box-shadow: 2px 2px #beb7b7; border-radius: 10px 10px;" >
+                  <button
+                  type="button"
+                  class="close border-0 bg-white text-end mx-4"
+                  style="color: #ceb08d"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true" style="font-size: 40px">&times;</span>
+                </button>
+                    <h5 class="text-center">Share your wesite</h5> 
+                    <div class="ms-5 mb-5 mt-4">
+                      <p class="fs-5 d-inline">Your website URL</p>
+                      <br>
+                      <input class="rounded-3 mb-2" style="width: 48vh; border: 1px solid #ceb08d" type="text" name="" id="" placeholder="https://www.maryinthailand.com/wedding/daniandjamie
+                      ">
+                      <button type="button" class="mx-1 btn btn-primary btn-sm fs-6"  data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Copy URL</button>
+                    </div>
+                    <p class="text-center fs-5">
+                      Want to edit and manage your URLs? <a class="text-decoration-none fs-5" style="color:#ceb08d" href="">View Settings</a>
+
+                </div>
+              </div>
+            </div>
+           
+           
           </div>
           </div>
         </div>
       </div>
       <div
-        class="col-lg-8 p-4 col-md-12 col-sm-12 "
+        class="col-lg-8 p-4 col-md-12 col-sm-12 bg-image "
         style="
           background-image: url('static/images/dashboard-background.png');
           background-size: cover;
           background-color: white;
           background-position: center;
+          height: auto;
+          
         "
       >
         <div class="mx-auto pt-lg-4">
           <div class="text-center pt-lg-5" style="color: #d1b594">
-            <h1 class="pt-lg-5 fs-sm-6" style="font-size: xxx-large">
+            <h1 class="pt-lg-5 " style="font-size: xxx-large">
               {{session['groomFirstName']}} & {{session['brideFirstName']}}'s
               Wedding
             </h1>
           </div>
           <div class="text-center pt-lg-5  ">
-            <h1 class="text-dark display-sm-6" style="font-size: xxx-large; ">48 days to go!</h1>
+            <h1 class="text-dark" style="font-size: xxx-large; ">48 days to go!</h1>
           </div>
         </div>
       </div>

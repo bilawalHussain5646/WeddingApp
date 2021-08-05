@@ -19,8 +19,8 @@ content%}
       <p class="card-text text-center">From Other Websites</p>
       <div class="d-flex justify-content-center">
         <button
-          data-toggle="modal"
-          data-target="#exampleModal"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
           class="btn"
           style="width: 50%; background-color: #f8c2ae; color: #ffffff"
         >
@@ -44,9 +44,10 @@ content%}
           <h5 class="modal-title" id="exampleModalLabel">Gift Details</h5>
           <button
             type="button"
+            data-bs-backdrop="false"
             class="close"
-            data-dismiss="modal"
-            aria-label="Close"
+            data-bs-dismiss="modal"
+            aria-bs-label="Close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -114,7 +115,7 @@ content%}
             <button
               type="button"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
             >
               Cancel
             </button>
@@ -207,7 +208,7 @@ content%}
         <p class="card-text text-center" style="color: #aeaeae !important">
           {{gift[2]}}
         </p>
-        <p class="card-text text-center">{{gift[5]}}</p>
+
         <form action="/add-cart" method="GET">
           <input name="id" type="text" value="{{gift[4]}}" hidden />
           <button
