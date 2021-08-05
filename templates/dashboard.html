@@ -23,7 +23,7 @@
           </div>
           <div class="row px-5 py-3">
             <div class="col mt-1">
-              <div class="d-flex justify-content-center">
+              <!-- <div class="d-flex justify-content-center">
                 <img
                   src="static/images/calendar.png"
                   style="width: 30px; height: 25px"
@@ -32,13 +32,27 @@
                 />
                 <div class="mx-2 dash" style="color: rgb(166, 166, 166)">
                   Wedding Date
+                  <span style="margin: 0 0 0 0"
+                    >{{session['dateOfMarriage']}}</span
+                  >
                 </div>
-              </div>
-              <div
-                class="d-flex justify-content-center"
-                style="color: rgb(166, 166, 166); margin-bottom: 2vh"
-              >
-                <label>{{session['dateOfMarriage']}}</label>
+              </div> -->
+              <div class="d-flex justify-content-end">
+                <div
+                  class="col-1 mt-3 mx-3"
+                  style="
+                    width: 27px;
+                    height: 27px;
+                    background: url('static/images/calendar.png') no-repeat;
+                    background-size: 100% 100%;
+                  "
+                ></div>
+                <span class="mx-2 dash" style="color: rgb(166, 166, 166)">
+                  Wedding Date
+                  <span style="margin: 0 0 0 0">
+                    {{session['dateOfMarriage']}}
+                  </span>
+                </span>
               </div>
             </div>
             <div class="col" style="font-family: Heading">
@@ -47,7 +61,7 @@
                   class="col-1 mt-3 mx-3"
                   style="
                     width: 27px;
-                    height: 30px;
+                    height: 27px;
                     background: url('static/images/location.png') no-repeat;
                     background-size: 100% 100%;
                   "
@@ -75,7 +89,11 @@
                 </div>
                 <div class="col-3 text-end">
                   <a
-                    style="color: #b98e7f; text-decoration: none"
+                    style="
+                      color: #b98e7f;
+                      text-decoration: none;
+                      border-bottom: 2px solid #ceb08d;
+                    "
                     href="/guestslist"
                     value="0"
                     >View</a
@@ -123,7 +141,11 @@
                 </div>
                 <div class="col-3 mx-0 text-end">
                   <a
-                    style="color: #b98e7f; text-decoration: none"
+                    style="
+                      color: #b98e7f;
+                      text-decoration: none;
+                      border-bottom: 2px solid #ceb08d;
+                    "
                     href="/registry"
                     value="0"
                     >View</a
@@ -144,7 +166,11 @@
                 <div class="col-9 dash">Guests Added ({{TotalGuests}})</div>
                 <div class="col-3 text-end">
                   <a
-                    style="color: #b98e7f; text-decoration: none"
+                    style="
+                      color: #b98e7f;
+                      text-decoration: none;
+                      border-bottom: 2px solid #ceb08d;
+                    "
                     href="/guestslist"
                     value="0"
                     >View</a
@@ -266,10 +292,10 @@
     <div
       class="col-lg-8 p-4 col-md-12 col-sm-12 bg-image"
       style="
-        background-image: url('static/images/dashboard-background.png');
+        background: url('static/images/dashboard-background.png') no-repeat;
         background-size: cover;
         background-color: white;
-        background-position: center;
+        background-position: right;
         height: auto;
       "
     >
