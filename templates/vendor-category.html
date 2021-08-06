@@ -1,15 +1,22 @@
 {% extends "default_user.html" %} {%block title%} Vendors {% endblock %} {%block
 content%}
-
+<div
+  class="container-fluid-fluid"
+  style="padding-top: 8px; background-color: #cecece"
+></div>
 <!--Section: Block Content-->
-<section class="mt-5 pt-5 mb-5 bg-white">
+<section class="container-fluid-fluid mt-5 mb-5 bg-white">
   <div class="row">
     <div class="col d-flex justify-content-center mb-4 mb-md-0">
       <div class="mdb-lightbox">
         <div class="row product-gallery mx-1">
           <div class="col mb-0">
             <figure class="view overlay rounded z-depth-1 main-img">
-              <img src="{{vendor[2]}}" class="img-fluid z-depth-1" />
+              <img
+                src="{{vendor[2]}}"
+                style="width: 35vh"
+                class="img-fluid z-depth-1"
+              />
             </figure>
           </div>
         </div>
@@ -19,18 +26,16 @@ content%}
 
   <div class="container">
     <div class="container" style="width: 90%">
-      <div class="row">
+      <div class="row mt-4">
         <div class="col" style="border-right: 1px solid #cac8c8">
-          <h5 style="color: #cfb290">{{vendor[1]}}</h5>
-
-          <p>
-            <span class="mr-1"><strong>{{vendor[3]}}</strong></span>
-          </p>
-          <p class="pt-1" style="color: #aeaeae">{{vendor[5]}}</p>
+          <h5 class="mx-5" style="color: #cfb290 !important">
+            {{vendor[1]}} - {{vendor[3]}}
+          </h5>
+          <p class="pt-3 mx-5" style="color: #aeaeae">{{vendor[5]}}</p>
         </div>
         <div class="col">
-          <div class="table-responsive mt-5">
-            <table class="table table-sm table-borderless mb-0 mt-4">
+          <div class="table-responsive ms-5">
+            <table class="table table-sm table-borderless mb-0">
               <tbody>
                 <tr>
                   <th class="pl-0 w-25" scope="row"><p>City</p></th>
@@ -38,7 +43,7 @@ content%}
                 </tr>
                 {% if vendor[7] %}
                 <tr>
-                  <th class="w-25" scope="row">
+                  <th scope="row">
                     <p>Phone Number</p>
                   </th>
 
@@ -83,8 +88,12 @@ content%}
       <div>
         <a href="/vendors">
           <button
-            class="px-5 my-3 btn text-white"
-            style="border: 1px solid #ceb08d; background-color: #e4d3c0"
+            class="bck px-5 mb-3 mt-5 btn btn-sm text-white fs-5"
+            style="
+              border: 1px solid #ceb08d;
+              background-color: #e4d3c0;
+              margin: 0 0 0 -150px;
+            "
           >
             Back
           </button></a

@@ -394,6 +394,9 @@ option:active {
   h1 {
     font-size: 1.3rem !important;
   }
+  .bck {
+    margin: 0 0 0 0 !important;
+  }
 }
 
 @media (max-width: 768px) {
