@@ -994,7 +994,7 @@
   var StatusArray = [];
   var temp = "";
   var temp2 = "";
-  var Guests = JSON.parse("{{ Guests | tojson | safe}}");
+  var Guests = JSON.parse('{{Guests|tojson|safe}}');
   for (var key in Guests) {
     if (Guests.hasOwnProperty(key)) {
       for (var k in Guests[key]["members"]) {
@@ -1116,7 +1116,7 @@
           <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"  data-bs-id="` +
         Guest_key +
         `"
-          
+
           >
             <div><label>` +
         Guests[Guest_key]["email"] +
@@ -1130,29 +1130,29 @@
           <td class="UpdateClass" scope="row"  data-bs-id="` +
         Guest_key +
         `"
-          
-          
-          data-bs-toggle="modal" data-bs-target="#UpdateModal" 
+
+
+          data-bs-toggle="modal" data-bs-target="#UpdateModal"
           >
-            
+
             <div>
               ` +
         membersArray[Guest_key] +
         `
             </div>
-          
+
           </td>
 
           <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"  data-bs-id="` +
         Guest_key +
         `"
-          
+
           >
             <label>` +
         Guests[Guest_key]["Total"] +
         `</label>
           </td>
-          <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal" 
+          <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"
           data-bs-id="` +
         Guest_key +
         `"
@@ -1165,15 +1165,15 @@
           data-bs-toggle="modal" data-bs-target="#MessageModal"  data-bs-id="` +
         Guest_key +
         `">
-            
-              
+
+
                 <img
                   src="static/images/message-icon.png"
                   style="width: 30px"
                   alt=""
                 />
-            
-         
+
+
           </td>
           <td scope="row">
             <form action="/guestslist" method="POST">
@@ -1198,7 +1198,7 @@
         </tr>
       }
       );
-      
+
     `
     );
   }
