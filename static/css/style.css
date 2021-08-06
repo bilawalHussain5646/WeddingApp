@@ -321,6 +321,12 @@ input:focus {
 
   border-radius: 15px;
 }
+.active {
+  
+  border: 1px solid #d1b594 !important;
+
+  border-radius: 15px;
+}
 .dropdown-item:focus{
   outline:none !important;
   background:none !important;
