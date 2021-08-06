@@ -577,8 +577,12 @@
     else if (currentURL.includes("/invitation_website")){
       document.getElementById("website").classList.add("active");
     }
-   
+   else if (currentURL.includes("/vendor-category")){
+    document.getElementById("vendors").classList.add("active");
 
+   }
+   // add more links here like above
+   
   </script>
   {% block scriptPage %} {% endblock %}
 </html>
