@@ -3,10 +3,10 @@
 
 <div class="bg-white">
   <div class="row pt-4">
-    <h3 class="text-center pb-4"><strong>Guests List</strong></h3>
+    <h4 class="text-center text-dark pb-5 ">Guests List</h4>
   </div>
-  <div class="row">
-    <div class="col d-flex justify-content-end">
+  <div class="row mb-5">
+    <div class="col d-flex justify-content-end ">
       <button
         type="button"
         class="border-0 bg-white"
@@ -48,13 +48,13 @@
               href="/gifts"
               > <img
               class="img-fluid  dropdown"
-              style="width: 30px; height: 25px"
+              style="width: 30px; height: 30px; margin-top: 8px;"
               src="./static/images/download.png"
               alt=""
               
           /> Download Guest list
           <br>
-          <sup class="fs-6 "style="margin-left: 35px">Microsoft Excel File
+          <sup class="fs-6 "style="margin:0 0 0 15px;">Microsoft Excel File
           </sup>
           </a
             >
@@ -62,7 +62,7 @@
           <li >
             <a
               class="dropdown-item navigation-dropdown-color py-3"
-              href="/registry"style="margin: -10px 0 -10px 0;"
+              href="/registry"style="margin: -10px 0 -8px 0;"
               ><img
               class="img-fluid   dropdown"
               style="width: 30px; height: 25px"
@@ -73,12 +73,7 @@
             >
           </li>
         </ul>
-     
     </div>
-   
-      
-
-    
   </div>
   <!-- Add Guest Modal -->
   <div
@@ -102,31 +97,31 @@
             <span aria-hidden="true" style="font-size: 40px">&times;</span>
           </button>
         </div>
-        <h4 class="text-center"><strong>Add Guests</strong></h4>
+        <h4 class="text-center">Add Guests</h4>
         <div class="modal-body">
-          <div class="row">
-            <div class="col">
+          <div class="row justify-content-center mb-4">
+            <div class="col-3">
               <button
                 type="button"
-                class="btn text-white w-100"
+                class="btn text-white w-100 fs-6"
                 onclick="showTab('1')"
               >
                 Single People
               </button>
             </div>
-            <div class="col">
+            <div class="col-3">
               <button
                 type="button"
-                class="btn text-white w-100"
+                class="btn text-white w-100  fs-6"
                 onclick="showTab('2')"
               >
                 Couple
               </button>
             </div>
-            <div class="col">
+            <div class="col-3">
               <button
                 type="button"
-                class="btn text-white w-100"
+                class="btn text-white w-100  fs-6"
                 onclick="showTab('3')"
               >
                 Family
@@ -135,12 +130,12 @@
           </div>
           <form action="/guestslist" method="POST">
             <input id="opt" value="1" name="opt" hidden />
-            <div class="row mt-2">
+            <div class="row mt-2 px-4">
               <div class="col">
-                <div class="form-group label-floating">
-                  <label for="inputTitle1">Title</label>
+                <div class="form-group label-floating ">
+                  <label class="fs-6 text-dark" for="inputTitle1">Title</label>
                   <select
-                    class="form-select"
+                    class="form-select fs-6"
                     id="inputTitle1"
                     name="inputTitle1"
                     aria-label="Default select example"
@@ -159,10 +154,10 @@
 
               <div class="col">
                 <div class="form-group label-floating">
-                  <label for="inputFirstName1">First Name</label>
+                  <label class="fs-6 text-dark" for="inputFirstName1">First Name</label>
                   <input
-                    type="text"
-                    class="px-2"
+                    type="text"style=" border: 1px solid #ceb08d"
+                    class="px-2 rounded-3"
                     id="inputFirstName1"
                     name="inputFirstName1"
                     required
@@ -171,10 +166,10 @@
               </div>
               <div class="col">
                 <div class="form-group label-floating">
-                  <label for="inputLastName1">Last Name</label>
+                  <label class="fs-6 text-dark" for="inputLastName1">Last Name</label>
                   <input
-                    type="text"
-                    class="px-2"
+                    type="text"style=" border: 1px solid #ceb08d"
+                    class="px-2 rounded-3"
                     id="inputLastName1"
                     name="inputLastName1"
                     required
@@ -184,7 +179,7 @@
             </div>
             <!-- This is the first input which is compulsory in all tabs -->
 
-            <div id="tab2" style="display: none">
+            <div class="mx-4" id="tab2" style="display: none">
               <div class="row mt-2">
                 <div class="col">
                   <div class="form-group label-floating">
@@ -208,8 +203,8 @@
                 <div class="col">
                   <div class="form-group label-floating">
                     <input
-                      type="text"
-                      class="px-2"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 rounded-3"
                       id="inputFirstName2"
                       name="inputFirstName2"
                     />
@@ -218,8 +213,8 @@
                 <div class="col">
                   <div class="form-group label-floating">
                     <input
-                      type="text"
-                      class="px-2"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 rounded-3"
                       id="inputLastName2"
                       name="inputLastName2"
                     />
@@ -227,7 +222,7 @@
                 </div>
               </div>
             </div>
-            <div id="tab3" style="display: none">
+            <div class="mx-4" id="tab3" style="display: none">
               <div class="row mt-2">
                 <div class="col">
                   <div class="form-group label-floating">
@@ -248,174 +243,204 @@
                   </div>
                 </div>
 
-                <div class="col">
+                <div class="col ">
                   <div class="form-group label-floating">
                     <input
-                      type="text"
-                      class="px-2"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 rounded-3"
                       id="inputFirstName3"
                       name="inputFirstName3"
                     />
                   </div>
                 </div>
-                <div class="col">
+                <div class="col ">
                   <div class="form-group label-floating">
                     <input
-                      type="text"
-                      class="px-2"
-                      id="inputLastName3"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 rounded-3"
+                      id="inputLastName3 "
                       name="inputLastName3"
                     />
                   </div>
                 </div>
               </div>
             </div>
-            <div class="row mt-2">
-              <div class="col-sm-3">
-                <label>Invited?</label>
+            <div class="row my-2 ms-3">
+              <div class="col-1">
+                <label class="fs-6 text-dark">Invited?</label>
               </div>
               <div class="col-sm-7">
                 <input
-                  class="form-check-input"
+                  class="form-check-input fs-6"
                   type="radio"
                   name="invited"
                   id="option1"
                   value="Definetly"
                   checked="checked"
                 />
-                <label class="form-check-label px-2" for="option1"
+                <label class="form-check-label px-2 fs-6" for="option1"
                   >Definetly</label
                 >
 
                 <input
-                  class="form-check-input"
+                  class="form-check-input fs-6"
                   type="radio"
                   name="invited"
                   id="option2"
                   value="Maybe"
                 />
-                <label class="form-check-label px-2" for="option2">Maybe</label>
+                <label class="form-check-label px-2 fs-6" for="option2">Maybe</label>
               </div>
             </div>
-            <div class="row mt-2">
-              <div class="col">
-                <div class="form-group label-floating">
-                  <label for="inputStreetAddress">Street Address</label>
-                  <input
-                    type="text"
-                    class="px-2 w-100"
-                    id="inputStreetAddress"
-                    name="inputStreetAddress"
-                  />
-                </div>
+            
+
+            <div class="row ms-3 mx-5 " style="border-bottom: 2px solid #cccccc;">
+              <div class="col-10">
+                <p class="fs-5" style="margin: 25px 0 0 -12px;">Mailing Address</p>
               </div>
-              <div class="col">
-                <div class="form-group label-floating">
-                  <label for="inputAptFloor">Apt/Floor</label>
-                  <input
-                    type="text"
-                    class="px-2 w-100"
-                    id="inputAptFloor"
-                    name="inputAptFloor"
-                  />
-                </div>
-              </div>
+              <div class="col-2">
+                <a style=" margin: 0 0 0 10px;" class=" text-decoration-none " href="" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <img class="img-fluid ms-5"  src="./static/images/plus.png" alt="">
+                </a>
+              </div>  
             </div>
-            <div class="row mt-2">
-              <div class="col">
-                <div class="form-group label-floating">
-                  <label for="inputCity">City</label>
-                  <input
-                    type="text"
-                    class="px-2 w-100"
-                    id="inputCity"
-                    name="inputCity"
-                  />
+  
+            </p>
+            <div class="collapse mb-3 px-4" id="collapseExample">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group label-floating">
+                    <label class="fs-6 text-dark" for="inputStreetAddress">Street Address</label>
+                    <input
+                      type="text  "
+                      style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
+                      id="inputStreetAddress"
+                      name="inputStreetAddress"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group label-floating">
+                    <label class="fs-6 text-dark" for="inputAptFloor">Apt/Floor</label>
+                    <input
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
+                      id="inputAptFloor"
+                      name="inputAptFloor"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group label-floating">
-                      <label for="inputStateProvince">State/Province</label>
-                      <input
-                        type="text"
-                        class="px-2 w-100"
-                        id="inputStateProvince"
-                        name="inputStateProvince"
-                      />
+              <div class="row mt-2 ">
+                <div class="col">
+                  <div class="form-group label-floating">
+                    <label class="fs-6 text-dark" for="inputCity">City</label>
+                    <input
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
+                      id="inputCity"
+                      name="inputCity"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group label-floating">
+                        <label class="fs-6 text-dark" for="inputStateProvince">State/Province</label>
+                        <input
+                          type="text"style=" border: 1px solid #ceb08d"
+                          class="px-2 w-100 rounded-3"
+                          id="inputStateProvince"
+                          name="inputStateProvince"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group label-floating">
+                        <label class="fs-6 text-dark" for="inputZipCode">Zip Code</label>
+                        <input
+                          type="text"style=" border: 1px solid #ceb08d"
+                          class="px-2 w-100 rounded-3"
+                          id="inputZipCode"
+                          name="inputZipCode"
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div class="col-6">
-                    <div class="form-group label-floating">
-                      <label for="inputZipCode">Zip Code</label>
-                      <input
-                        type="text"
-                        class="px-2 w-100"
-                        id="inputZipCode"
-                        name="inputZipCode"
-                      />
-                    </div>
+                </div>
+              </div>
+  
+              <div class="row mt-2">
+                <div class="col-12 ">
+                  <div class="form-group label-floating">
+                    <label class="fs-6 text-dark" for="inputCountry">Country</label>
+                    <input
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
+                      id="inputCountry"
+                      name="inputCountry"
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="row mt-2">
-              <div class="col">
-                <div class="form-group label-floating">
-                  <label for="inputCountry">Country</label>
-                  <input
-                    type="text"
-                    class="px-2 w-100"
-                    id="inputCountry"
-                    name="inputCountry"
-                  />
-                </div>
+            <div class="row ms-3 mx-5" style="border-bottom: 2px solid #cccccc;">
+              <div class="col-10">
+                <p class="fs-5" style="margin: 25px 0 0 -12px;">Email & Mobile</p>
               </div>
+              <div class="col-2">
+                <a style=" margin: 0 0 0 10px;" class=" text-decoration-none " href="" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                  <img class="img-fluid ms-5"  src="./static/images/plus.png" alt="">
+                </a>
+              </div>
+            
             </div>
+          
+          <div class="collapse mb-3 px-4" id="collapseExample1">
+              <div class="row mt-2 justify-content-center">
+                <div class="col-6 ">
+                  <div class="form-group label-floating">
+                    <label class="fs-6 text-dark" for="inputEmail">Email</label>
+                    <input
+                      type="email"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
+                      id="inputEmail"
+                      name="inputEmail"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-6 ">
+                  <div class="form-group label-floating">
+                    <label class="fs-6 text-dark" for="inputContactNumber">Mobile</label>
+                    <input
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
+                      id="inputContactNumber"
+                      name="inputContactNumber"
+                    />
+                  </div>
+                </div>
+              </div>    
+          </div>
 
-            <div class="row mt-2">
-              <div class="col">
-                <div class="form-group label-floating">
-                  <label for="inputEmail">Email</label>
-                  <input
-                    type="email"
-                    class="px-2 w-100"
-                    id="inputEmail"
-                    name="inputEmail"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group label-floating">
-                  <label for="inputContactNumber">Mobile</label>
-                  <input
-                    type="text"
-                    class="px-2 w-100"
-                    id="inputContactNumber"
-                    name="inputContactNumber"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
+
+            
+            <div class="float-end mt-5">
               <button
                 type="submit"
                 name="action"
                 value="AddRow"
-                class="btn text-white"
+                style="width: 20vh;"
+                class="btn text-white fs-6"
               >
-                Save & Add Another
+              Save & Add Another
+
               </button>
-              <button
-                type="button"
-                class="btn bg-white"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+
             </div>
           </form>
         </div>
@@ -434,7 +459,7 @@
     aria-hidden="true"
     data-bs-backdrop="false"
   >
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg " role="document">
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-end border-0">
           <button
@@ -447,31 +472,31 @@
             <span aria-hidden="true" style="font-size: 40px">&times;</span>
           </button>
         </div>
-        <h4 class="text-center"><strong>Edit Guests</strong></h4>
+        <h4 class="text-center mb-5">Edit Guests</h4>
         <div class="modal-body">
-          <div class="row">
-            <div class="col">
+          <div class="row justify-content-center mb-4">
+            <div class="col-3">
               <button
                 type="button"
-                class="btn text-white w-100"
+                class="btn text-white w-100 fs-6"
                 onclick="showUpdateTab('1')"
               >
                 Guests Info
               </button>
             </div>
-            <div class="col">
+            <div class="col-3">
               <button
                 type="button"
-                class="btn text-white w-100"
+                class="btn text-white w-100 fs-6"
                 onclick="showUpdateTab('2')"
               >
                 Contact Info
               </button>
             </div>
-            <div class="col">
+            <div class="col-3">
               <button
                 type="button"
-                class="btn text-white w-100"
+                class="btn  text-white w-100 fs-6"
                 onclick="showUpdateTab('3')"
               >
                 RSVP Status
@@ -479,18 +504,18 @@
             </div>
           </div>
           <form action="/guestslist" method="POST">
-            <input type="text" id="option" name="option" hidden />
-            <input type="text" id="total" name="inputTotal" hidden />
+            <input class="rounded-3" type="text" style=" border: 1px solid #ceb08d"id="option" name="option" hidden />
+            <input class="rounded-3" type="text" style=" border: 1px solid #ceb08d"id="total" name="inputTotal" hidden />
 
-            <div id="UpdateTab1">
+            <div id="UpdateTab1"class="px-5" >
               <div class="updatetab">
                 <div class="row mt-2">
                   <div class="col">
                     <div class="form-group label-floating">
-                      <input type="text" id="GuestID1" name="GuestID1" hidden />
-                      <label for="inputTitle1">Title</label>
+                      <input type="text"  id="GuestID1" name="GuestID1" hidden />
+                      <label class="fs-6 text-dark" for="inputTitle1">Title</label>
                       <select
-                        class="form-select"
+                        class="form-select rounded-3"
                         id="Title1"
                         name="inputTitle1"
                         aria-label="Default select example"
@@ -509,10 +534,10 @@
 
                   <div class="col">
                     <div class="form-group label-floating">
-                      <label for="inputFirstName1">First Name</label>
+                      <label class="fs-6 text-dark" for="inputFirstName1">First Name</label>
                       <input
-                        type="text"
-                        class="px-2"
+                        type="text"style=" border: 1px solid #ceb08d"
+                        class="px-2 rounded-3"
                         id="FirstName1"
                         name="inputFirstName1"
                         required
@@ -521,10 +546,10 @@
                   </div>
                   <div class="col">
                     <div class="form-group label-floating">
-                      <label for="inputLastName1">Last Name</label>
+                      <label class="fs-6 text-dark" for="inputLastName1">Last Name</label>
                       <input
-                        type="text"
-                        class="px-2"
+                        type="text"style=" border: 1px solid #ceb08d"
+                        class="px-2 rounded-3"
                         id="LastName1"
                         name="inputLastName1"
                         required
@@ -542,7 +567,7 @@
                     <div class="form-group label-floating">
                       <input type="text" id="GuestID2" name="GuestID2" hidden />
                       <select
-                        class="form-select"
+                        class="form-select rounded-3"
                         name="inputTitle2"
                         id="Title2"
                         aria-label="Default select example"
@@ -562,8 +587,8 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <input
-                        type="text"
-                        class="px-2"
+                        type="text"style=" border: 1px solid #ceb08d"
+                        class="px-2 rounded-3"
                         id="FirstName2"
                         name="inputFirstName2"
                       />
@@ -572,8 +597,8 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <input
-                        type="text"
-                        class="px-2"
+                        type="text"style=" border: 1px solid #ceb08d"
+                        class="px-2 rounded-3"
                         id="LastName2"
                         name="inputLastName2"
                       />
@@ -587,7 +612,7 @@
                     <div class="form-group label-floating">
                       <input type="text" id="GuestID3" name="GuestID3" hidden />
                       <select
-                        class="form-select"
+                        class="form-select rounded-3"
                         name="inputTitle3"
                         id="Title3"
                         aria-label="Default select example"
@@ -607,8 +632,8 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <input
-                        type="text"
-                        class="px-2"
+                        type="text"style=" border: 1px solid #ceb08d"
+                        class="px-2 rounded-3"
                         id="FirstName3"
                         name="inputFirstName3"
                       />
@@ -617,8 +642,8 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <input
-                        type="text"
-                        class="px-2"
+                        type="text"style=" border: 1px solid #ceb08d"
+                        class="px-2 rounded-3"
                         id="LastName3"
                         name="inputLastName3"
                       />
@@ -628,42 +653,42 @@
               </div>
 
               <div class="row mt-2">
-                <div class="col-sm-3">
-                  <label>Invited?</label>
+                <div class="col-1">
+                  <label class="fs-6 text-dark">Invited?</label>
                 </div>
                 <div class="col-sm-7">
                   <input
-                    class="form-check-input"
+                    class="form-check-input fs-6"
                     type="radio"
                     name="inputInvited"
                     id="updateOption1"
                     value="Definetly"
                   />
-                  <label class="form-check-label px-2" for="updateOption1"
+                  <label class="form-check-label px-2 fs-6" for="updateOption1"
                     >Definetly</label
                   >
 
                   <input
-                    class="form-check-input"
+                    class="form-check-input fs-6"
                     type="radio"
                     name="inputInvited"
                     id="updateOption2"
                     value="Maybe"
                   />
-                  <label class="form-check-label px-2" for="updateOption2"
+                  <label class="form-check-label px-2 fs-6 " for="updateOption2"
                     >Maybe</label
                   >
                 </div>
               </div>
             </div>
-            <div id="UpdateTab2" style="display: none">
+            <div class="px-5 mb-5" id="UpdateTab2" style="display: none">
               <div class="row mt-2">
                 <div class="col">
                   <div class="form-group label-floating">
-                    <label for="inputStreetAddress">Street Address</label>
+                    <label class="fs-6 text-dark" for="inputStreetAddress">Street Address</label>
                     <input
-                      type="text"
-                      class="px-2 w-100"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
                       id="StreetAddress"
                       name="inputStreetAddress"
                     />
@@ -671,10 +696,10 @@
                 </div>
                 <div class="col">
                   <div class="form-group label-floating">
-                    <label for="inputAptFloor">Apt/Floor</label>
+                    <label class="fs-6 text-dark" for="inputAptFloor" >Apt/Floor</label>
                     <input
-                      type="text"
-                      class="px-2 w-100"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
                       id="AptFloor"
                       name="inputAptFloor"
                     />
@@ -684,10 +709,10 @@
               <div class="row mt-2">
                 <div class="col">
                   <div class="form-group label-floating">
-                    <label for="inputCity">City</label>
+                    <label class="fs-6 text-dark" for="inputCity">City</label>
                     <input
-                      type="text"
-                      class="px-2 w-100"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
                       id="City"
                       name="inputCity"
                     />
@@ -697,10 +722,10 @@
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group label-floating">
-                        <label for="inputStateProvince">State/Province</label>
+                        <label class="fs-6 text-dark" for="inputStateProvince">State/Province</label>
                         <input
-                          type="text"
-                          class="px-2 w-100"
+                          type="text"style=" border: 1px solid #ceb08d"
+                          class="px-2 w-100 rounded-3"
                           id="StateProvince"
                           name="inputStateProvince"
                         />
@@ -708,10 +733,10 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group label-floating">
-                        <label for="inputZipCode">Zip Code</label>
+                        <label class="fs-6 text-dark" for="inputZipCode">Zip Code</label>
                         <input
-                          type="text"
-                          class="px-2 w-100"
+                          type="text"style=" border: 1px solid #ceb08d"
+                          class="px-2 w-100 rounded-3"
                           id="ZipCode"
                           name="inputZipCode"
                         />
@@ -724,10 +749,10 @@
               <div class="row mt-2">
                 <div class="col">
                   <div class="form-group label-floating">
-                    <label for="inputCountry">Country</label>
+                    <label class="fs-6 text-dark" for="inputCountry">Country</label>
                     <input
-                      type="text"
-                      class="px-2 w-100"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
                       id="Country"
                       name="inputCountry"
                     />
@@ -738,11 +763,12 @@
               <div class="row mt-2">
                 <div class="col">
                   <div class="form-group label-floating">
-                    <label for="inputEmail">Email</label>
+                    <label class="fs-6 text-dark" for="inputEmail">Email</label>
                     <input
-                      type="email"
-                      class="px-2 w-100"
+                      type="email"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3 "
                       id="Email"
+                      
                       name="inputEmail"
                       required
                     />
@@ -750,10 +776,10 @@
                 </div>
                 <div class="col">
                   <div class="form-group label-floating">
-                    <label for="inputContactNumber">Mobile</label>
+                    <label class="fs-6 text-dark" for="inputContactNumber">Mobile</label>
                     <input
-                      type="text"
-                      class="px-2 w-100"
+                      type="text"style=" border: 1px solid #ceb08d"
+                      class="px-2 w-100 rounded-3"
                       id="ContactNumber"
                       name="inputContactNumber"
                     />
@@ -767,7 +793,8 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <input
-                        type="text"
+                      class="rounded-3"
+                        type="text"style=" border: 1px solid #ceb08d"
                         id="Guest_ID1"
                         name="Guest_ID1"
                         hidden
@@ -779,7 +806,7 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <select
-                        class="form-select"
+                        class="form-select rounded-3"
                         id="Member1Status"
                         name="member1Status"
                         aria-label="Default select example"
@@ -802,6 +829,7 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <input
+                      class="rounded-3"
                         type="text"
                         id="Guest_ID2"
                         name="Guest_ID2"
@@ -814,7 +842,7 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <select
-                        class="form-select"
+                        class="form-select rounded-3"
                         id="Member2Status"
                         name="member2Status"
                         aria-label="Default select example"
@@ -834,7 +862,8 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <input
-                        type="text"
+                      class="rounded-3"
+                        type="text"style=" border: 1px solid #ceb08d"
                         id="Guest_ID3"
                         name="Guest_ID3"
                         hidden
@@ -846,7 +875,7 @@
                   <div class="col">
                     <div class="form-group label-floating">
                       <select
-                        class="form-select"
+                        class="form-select rounded-3"
                         id="Member3Status"
                         name="member3Status"
                         aria-label="Default select example"
@@ -867,17 +896,12 @@
                 type="submit"
                 name="action"
                 value="UpdateRow"
-                class="btn text-white"
+                style="width: 15vh"
+                class="btn text-white fs-6"
               >
                 Save
               </button>
-              <button
-                type="button"
-                class="btn bg-white"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+              
             </div>
           </form>
         </div>
@@ -895,52 +919,53 @@
     data-bs-backdrop="false"
     aria-hidden="true"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Message Guests</h5>
-        </div>
+        
+          <h5 class="modal-title mx-3 mt-4" style=" padding-left: 20px;" id="exampleModalLabel">Message Guests</h5>
+        
         <form action="/guestslist" method="POST">
           <div class="modal-body">
             <input type="text" id="GuestID-Email" name="GuestID-Email" hidden />
-            <div class="mb-3">
-              <label for="recipient-email" class="col-form-label">To:</label>
+            <div class="my-4">
+              <sup for="recipient-email" class="col-form-label display-6">To:</sup>
               <input
-                type="text"
-                class="form-control"
+                type="text" style="border: none; background-color: rgb(231, 230, 230); "
+                class="form-control w-75 float-end rounded-3 "
                 id="recipient-email"
                 name="recipient-email"
                 readonly
               />
             </div>
-            <div class="mb-3">
-              <label for="recipient-subject" class="col-form-label"
-                >Subject:</label
+            <div class="my-4">
+              <sup for="recipient-subject" class="col-form-label "
+                >Subject:</sup
               >
+      
               <input
-                type="text"
+                type="text"style="border: none; background-color: rgb(231, 230, 230);"
                 placeholder="Ex: Reminder-title"
-                class="form-control"
+                class="form-control w-75 float-end rounded-3"
                 id="recipient-subject"
                 name="recipient-subject"
               />
             </div>
-            <div class="mb-3">
-              <label for="recipient-message" class="col-form-label"
-                >Message:</label
+            <div class="my-4">
+              <sup for="recipient-message" class="col-form-label "
+                >Message:</sup
               >
               <textarea
-                placeholder="Enter your message"
-                class="form-control"
+                placeholder="Enter your message"style="border: none; background-color: rgb(231, 230, 230); border-radius: 10px;"
+                class="form-control w-75 float-end "
                 id="recipient-message"
                 name="recipient-message"
               ></textarea>
             </div>
           </div>
-          <div class="modal-footer">
+          <div class="float-end m-3">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary fs-5"
               data-bs-dismiss="modal"
             >
               Cancel
@@ -949,7 +974,7 @@
               type="submit"
               name="action"
               value="SendMessage"
-              class="btn btn-primary"
+              class="btn btn-primary fs-5"
             >
               Send
             </button>
@@ -966,41 +991,41 @@
     style="border: 1px solid #cccccc; border-top: none; border-right:none"
   >
     <div class="col-3" style="margin-top:53px; border-top:1px solid #cccccc;border-right:1px solid #cccccc;">
-      <div class="row justify-content-center py-2">
-        <div class="col-2 text-end" style="font-size: 30px">{{status[1]}}</div>
-        <div class="col-6 py-2">
-          <h4>Attending</h4>
+      <div class="row justify-content-center pt-4 pb-2">
+        <div class="col-2 text-end " style="font-size: 25px">{{status[1]}}</div>
+        <div class="col-6 pt-2">
+          <h4 class="text-uppercase display-6">Attending</h4>
         </div>
       </div>
       <div class="row justify-content-center pb-2">
-        <div class="col-2 text-end" style="font-size: 30px">{{status[2]}}</div>
-        <div class="col-6 py-2">
-          <h4>Not Attending</h4>
+        <div class="col-2 text-end" style="font-size: 25px; margin-top: -7px;">{{status[2]}}</div>
+        <div class="col-6">
+          <h4 class="text-uppercase display-6 ">Not Attending</h4>
         </div>
       </div>
       <div class="row justify-content-center pb-2">
-        <div class="col-2 text-end" style="font-size: 30px">{{status[3]}}</div>
-        <div class="col-6 py-2">
-          <h4>Maybe</h4>
+        <div class="col-2 text-end pb-2" style="font-size: 25px; margin-top: -7px;">{{status[3]}}</div>
+        <div class="col-6 ">
+          <h4 class="text-uppercase display-6">Maybe</h4>
         </div>
       </div>
       <div class="row justify-content-center pb-2">
-        <div class="col-2 text-end" style="font-size: 30px">{{status[0]}}</div>
-        <div class="col-6 py-2">
-          <h4>Not Replied</h4>
+        <div class="col-2 text-end pb-2" style="font-size: 25px ; margin-top: -7px;">{{status[0]}}</div>
+        <div class="col-6 ">
+          <h4 class="text-uppercase display-6">Not Replied</h4>
         </div>
       </div>
-      <div class="row justify-content-center pb-2">
-        <div class="col-2 text-end" style="font-size: 30px">{{status[5]}}</div>
-        <div class="col-6 py-2">
-          <h4>Not Invited</h4>
+      <div class="row justify-content-center pb-4">
+        <div class="col-2 text-end" style="font-size: 25px ; margin-top: -7px;">{{status[5]}}</div>
+        <div class="col-6 ">
+          <h4 class="text-uppercase display-6">Not Invited</h4>
         </div>
       </div>
       <div class="row justify-content-center py-2 border">
-        <div class="col-4 py-2 text-end">
-          <h4>Total Invited</h4>
+        <div class="offset-2 col-6 py-2 text-end">
+          <h4 class="text-uppercase display-6">Total Invited</h4>
         </div>
-        <div class="col-4 text-start" style="font-size: 30px">
+        <div class="col-4 text-start" style="font-size: 25px">
           {{status[4]}}
         </div>
       </div>
@@ -1016,9 +1041,9 @@
             <tr style="border-style:none !important">
               <th
                 scope="col"
-                style="border-left: none; border-right: none; border-top: none"
+                style="border-left: none; border-right: none; border-top: none ;"
               >
-                <h4>Select</h4>
+                <h4 >Select</h4>
               </th>
               <th
                 scope="col"
@@ -1160,7 +1185,7 @@
                 checked="checked"
                 disabled
               />
-              <label class="form-check-label px-2" for="option2">Maybe</label>
+              <label class="form-check-label px-2 " for="option2">Maybe</label>
             </div>`;
       }
       membersArray[key] = temp;
@@ -1182,8 +1207,9 @@
           <td scope="row">
             <input
               type="checkbox"
+              
               aria-label="Checkbox for following text input"
-              id="` +
+              id= exampleCheck1 "` +
         Guest_key +
         `"
               name="selectopt"
@@ -1236,7 +1262,7 @@
         Guests[Guest_key]["Total"] +
         `</label>
           </td>
-          <td class="UpdateClass" scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"
+          <td class="UpdateClass " scope="row" data-bs-toggle="modal" data-bs-target="#UpdateModal"
           data-bs-id="` +
         Guest_key +
         `"
