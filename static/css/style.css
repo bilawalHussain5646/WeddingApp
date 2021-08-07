@@ -32,9 +32,16 @@ h1 {
   font-family: Gabriola;
 }
 p,
-.dash {
+.dash{
   font-family: Gabriola;
   font-size: 24px !important;
+}
+
+sup{
+  padding-left: 20px;
+  font-family: Gabriola;
+  font-size: 18px !important;
+  color: rgb(166, 166, 166);
 }
 h2 {
   color: #ceb08d !important;
@@ -225,7 +232,7 @@ button:focus,
 .auth-login-button:focus,
 option:focus,
 select:focus,
-input:focus {
+input:focus,textarea:focus {
   outline: none !important;
   box-shadow: none !important;
 }
