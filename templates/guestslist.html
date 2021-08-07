@@ -21,14 +21,64 @@
         />
         Add Guests
       </button>
-      <a href=""
+      <a href="" class="dropdown"
+      href="#"
+      id="navbarDropdown"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false" 
         ><img
-          class="img-fluid ms-3 mt-2"
+          class="img-fluid ms-3 mt-2 dropdown"
           style="width: 35px; height: 13px"
           src="./static/images/triple-dot.png"
           alt=""
+          
       /></a>
+    
+       
+        <ul
+          class="dropdown-menu"
+          style="box-shadow: 2px 2px #beb7b7; border-radius: 10px 10px"
+          aria-labelledby="navbarDropdown"
+        >
+          <li >
+            <a
+              class="dropdown-item navigation-dropdown-color"
+              style="padding-top: 0px; padding-bottom: 0px;"
+              href="/gifts"
+              > <img
+              class="img-fluid  dropdown"
+              style="width: 30px; height: 25px"
+              src="./static/images/download.png"
+              alt=""
+              
+          /> Download Guest list
+          <br>
+          <sup class="fs-6 "style="margin-left: 35px">Microsoft Excel File
+          </sup>
+          </a
+            >
+          </li>
+          <li >
+            <a
+              class="dropdown-item navigation-dropdown-color py-3"
+              href="/registry"style="margin: -10px 0 -10px 0;"
+              ><img
+              class="img-fluid   dropdown"
+              style="width: 30px; height: 25px"
+              src="./static/images/print.png"
+              alt=""
+              
+          /> print gest list</a
+            >
+          </li>
+        </ul>
+     
     </div>
+   
+      
+
+    
   </div>
   <!-- Add Guest Modal -->
   <div
