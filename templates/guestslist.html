@@ -3,7 +3,7 @@
 
 <div class="bg-white">
   <div class="row pt-4">
-    <h4 class="text-center text-dark pb-5 ">Guests List</h4>
+    <h4 class="text-center text-dark pb-5 ms-2">Guests List</h4>
   </div>
   <div class="row mb-5">
     <div class="col d-flex justify-content-end ">
@@ -1043,49 +1043,49 @@
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none ;"
               >
-                <h4 >Select</h4>
+                <h4 style="color: #cccccc !important;" >Select</h4>
               </th>
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4>Status</h4>
+                <h4 style="color: #cccccc !important;">Status</h4>
               </th>
               <th
                 scope="col "
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4 class="text-start" >Email & Mobile</h4>
+                <h4 class="text-start" style="color: #cccccc !important;" >Email & Mobile</h4>
               </th>
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4>Name</h4>
+                <h5 style="color: #cccccc !important;">Name</h5>
               </th>
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4>Total</h4>
+                <h4 style="color: #cccccc !important;">Total</h4>
               </th>
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4>Invited?</h4>
+                <h4 style="color: #cccccc !important;">Invited?</h4>
               </th>
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4>Message</h4>
+                <h4 style="color: #cccccc !important;">Message</h4>
               </th>
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4>Cancel</h4>
+                <h4 style="color: #cccccc !important;">Cancel</h4>
               </th>
             </tr>
           </thead>
@@ -1120,7 +1120,7 @@
           `</label></div>`;
         temp2 =
           temp2 +
-          `<div><label>` +
+          `<div class="mx-auto"><label>` +
           Guests[key]["members"][k]["Status"] +
           `</label></div>`;
         //console.log(" loop is running")
@@ -1204,10 +1204,10 @@
     $("tbody").append(
       `
         <tr>
-          <td scope="row">
+          <td scope="row" >
             <input
               type="checkbox"
-              
+              class="form-check-input mt-4 ms-3"
               aria-label="Checkbox for following text input"
               id= exampleCheck1 "` +
         Guest_key +

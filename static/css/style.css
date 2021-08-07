@@ -252,9 +252,7 @@ input:focus,textarea:focus {
   display: inline-block;
   border-bottom: 0.5px solid #ceae83 !important;
 }
-.nav-link {
-  padding: 0 3px 0 3px !important;
-}
+
 .nav-item {
   border-radius: 8px 8px !important;
 }
@@ -311,27 +309,23 @@ input:focus,textarea:focus {
 }
 .nav-item {
   font-size: 18px !important;
-  margin: 8px 10px 8px 10px !important;
-  padding: 0px 10px !important;
-  white-space: nowrap !important;
+  margin: 16px 10px 8px 10px !important;
+  padding: 0px 9px 0 9px !important;
   border-radius: 8px 8px !important;
 }
 .nav-link {
-  padding: 0 3px 0 3px !important;
-  margin: 0 0 0 0;
+  padding: 0 2px 0 2px !important;
+  margin: 0 0 0 0 !important;
   color: rgb(166, 166, 166) !important;
 }
 
 .nav-item:hover {
-  
   border: 1px solid #d1b594;
-
   border-radius: 15px;
 }
 .active {
   
-  border: 1px solid #d1b594 !important;
-
+  border: 2px solid #d1b594 !important;
   border-radius: 15px;
 }
 
