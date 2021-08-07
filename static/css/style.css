@@ -366,14 +366,7 @@ button {
 }
 .UpdateClass {
 }
-/* input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="date"],
-input[type="time"] {
-  border: 2px solid #ceb08d !important;
-  border-radius: 5px;
-} */
+
 .disable-select {
   visibility: hidden;
   user-select: none !important; /* supported by Chrome and Opera */
@@ -399,14 +392,17 @@ input[type="time"] {
 .form-switch .form-check-input:focus {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#e3d1bd'/%3e%3c/svg%3e");
 }
+
 option{
-  background-color: #ffff !important;
+  
+    background-color: #ffff !important;
 }
 
 option:hover {
   background-color: #f8c2ae !important;
 }
 option:focus {
+  
   background-color: #f8c2ae !important;
 }
 option:checked,
