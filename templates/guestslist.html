@@ -13,9 +13,21 @@
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
+        <img
+          class="img-fluid"
+          style="width: 20px; height: 20px"
+          src="./static/images/add.png"
+          alt=""
+        />
         Add Guests
       </button>
-      <button class="border-0 bg-white">Print</button>
+      <a href=""
+        ><img
+          class="img-fluid ms-3 mt-2"
+          style="width: 35px; height: 13px"
+          src="./static/images/triple-dot.png"
+          alt=""
+      /></a>
     </div>
   </div>
   <!-- Add Guest Modal -->
@@ -900,10 +912,10 @@
   <!-- Showing Status Portion -->
   <div class="row mt-5" style="border-bottom: 1px solid #cccccc"></div>
   <div
-    class="row content-center"
+    class="row justify-content-center"
     style="border: 1px solid #cccccc; border-top: 0px"
   >
-    <div class="col-3">
+    <div class="col-3 mt-5">
       <div class="row justify-content-center py-2">
         <div class="col-2 text-end" style="font-size: 30px">{{status[1]}}</div>
         <div class="col-6 py-2">
@@ -948,33 +960,57 @@
       class="col-9"
       style="border: 1px solid #cccccc; border-top: 0px; border-bottom: 0px"
     >
-      <div class="table-responsive">
+      <div class="table-responsive" style="border-top: none">
         <table class="table table-bordered w-200">
           <thead class="thead-dark">
-            <tr>
-              <th scope="col">
+            <tr >
+              <th
+                scope="col"
+                style="border-left: none; border-right: none; border-top: none"
+              >
                 <h4>Select</h4>
               </th>
-              <th scope="col">
+              <th
+                scope="col"
+                style="border-left: none; border-right: none; border-top: none"
+              >
                 <h4>Status</h4>
               </th>
-              <th scope="col">
-                <h4>Email & Mobile</h4>
+              <th
+                scope="col "
+                style="border-left: none; border-right: none; border-top: none"
+              >
+                <h4 class="text-start" >Email & Mobile</h4>
               </th>
-              <th scope="col">
+              <th
+                scope="col"
+                style="border-left: none; border-right: none; border-top: none"
+              >
                 <h4>Name</h4>
               </th>
-              <th scope="col">
+              <th
+                scope="col"
+                style="border-left: none; border-right: none; border-top: none"
+              >
                 <h4>Total</h4>
               </th>
-              <th scope="col">
+              <th
+                scope="col"
+                style="border-left: none; border-right: none; border-top: none"
+              >
                 <h4>Invited?</h4>
               </th>
-              <th scope="col">
-                <h4>Message</h4>
+              <th
+                scope="col"
+                style="border-left: none; border-right: none; border-top: none"
+              >
+                <h4 class="text-center" >Message</h4>
               </th>
-              <th scope="col">
-                <h4>Cancel</h4>
+              <th
+                scope="col"
+                style="border-left: none; border-right: none; border-top: none"
+              >
+                <h4 class="text-center" >Cancel</h4>
               </th>
             </tr>
           </thead>
@@ -1092,8 +1128,8 @@
   for (Guest_key in Guests) {
     $("tbody").append(
       `
-        <tr>
-          <td scope="row">
+        <tr >
+          <td scope="row"  >
             <input
               type="checkbox"
               aria-label="Checkbox for following text input"
@@ -1129,9 +1165,7 @@
 
           <td class="UpdateClass" scope="row"  data-bs-id="` +
         Guest_key +
-        `"
-
-
+        `" 
           data-bs-toggle="modal" data-bs-target="#UpdateModal"
           >
 
@@ -1160,14 +1194,15 @@
             ` +
         invitedDisplay[Guest_key] +
         `
-          </td>
-          <td class= "Email-ID" scope="row" class="bg-white border-0"
+          </td >
+          <td class= "Email-ID" scope="row" class="bg-white border-0 "
           data-bs-toggle="modal" data-bs-target="#MessageModal"  data-bs-id="` +
         Guest_key +
-        `">
+        `" >
 
 
                 <img
+                class="my-4 ms-4"
                   src="static/images/message-icon.png"
                   style="width: 30px"
                   alt=""
@@ -1175,14 +1210,14 @@
 
 
           </td>
-          <td scope="row">
+          <td scope="row" >
             <form action="/guestslist" method="POST">
               <input name="DeleteID" value="` +
         Guest_key +
         `" hidden />
 
               <button
-                class="bg-white border-0"
+                class="bg-white border-0 mt-2 ms-4"  
                 type="submit"
                 name="action"
                 value="DeleteRow"
