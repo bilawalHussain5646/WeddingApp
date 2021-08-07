@@ -327,6 +327,12 @@ input:focus {
 
   border-radius: 15px;
 }
+
+tbody, td, tfoot{
+  border-style:none !important;
+}
+
+
 .dropdown-item:focus{
   outline:none !important;
   background:none !important;

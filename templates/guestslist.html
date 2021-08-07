@@ -960,12 +960,12 @@
   </div>
 
   <!-- Showing Status Portion -->
-  <div class="row mt-5" style="border-bottom: 1px solid #cccccc"></div>
+  <!-- <div class="row mt-5" style="border-bottom: 1px solid #cccccc"></div> -->
   <div
     class="row justify-content-center"
-    style="border: 1px solid #cccccc; border-top: 0px"
+    style="border: 1px solid #cccccc; border-top: none; border-right:none"
   >
-    <div class="col-3 mt-5">
+    <div class="col-3" style="margin-top:53px; border-top:1px solid #cccccc;border-right:1px solid #cccccc;">
       <div class="row justify-content-center py-2">
         <div class="col-2 text-end" style="font-size: 30px">{{status[1]}}</div>
         <div class="col-6 py-2">
@@ -1008,12 +1008,12 @@
 
     <div
       class="col-9"
-      style="border: 1px solid #cccccc; border-top: 0px; border-bottom: 0px"
+      style="border: none !important; padding:0px;"
     >
-      <div class="table-responsive" style="border-top: none">
+      <div class="table-responsive" style="border-top: none;" >
         <table class="table table-bordered w-200">
           <thead class="thead-dark">
-            <tr >
+            <tr style="border-style:none !important">
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
@@ -1054,17 +1054,17 @@
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4 class="text-center" >Message</h4>
+                <h4>Message</h4>
               </th>
               <th
                 scope="col"
                 style="border-left: none; border-right: none; border-top: none"
               >
-                <h4 class="text-center" >Cancel</h4>
+                <h4>Cancel</h4>
               </th>
             </tr>
           </thead>
-          <tbody id="tbody">
+          <tbody id="tbody" style="border-style:none !important; ">
             <!-- Code in script section -->
           </tbody>
         </table>
@@ -1178,8 +1178,8 @@
   for (Guest_key in Guests) {
     $("tbody").append(
       `
-        <tr >
-          <td scope="row"  >
+        <tr>
+          <td scope="row">
             <input
               type="checkbox"
               aria-label="Checkbox for following text input"
@@ -1252,7 +1252,7 @@
 
 
                 <img
-                class="my-4 ms-4"
+                class="ms-3 my-3"
                   src="static/images/message-icon.png"
                   style="width: 30px"
                   alt=""
@@ -1267,12 +1267,13 @@
         `" hidden />
 
               <button
-                class="bg-white border-0 mt-2 ms-4"  
+                class="bg-white border-0"  
                 type="submit"
                 name="action"
                 value="DeleteRow"
               >
                 <img
+                class="ms-2 my-2"
                   src="static/images/delete-icon.png"
                   style="width: 30px"
                   alt=""
