@@ -13,14 +13,24 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <div class="container-fluid-fluid">
       <nav
         class="navbar navbar-expand-lg fixed-top navbar-light"
-        style="background-color: #fbf7f3 !important"
+        style="
+          background-color: #fbf7f3 !important;
+          padding-top: 6px;
+          padding-right: 26px;
+        "
       >
-        <a class="navbar-brand disable-select">Marry in Thailand Wedding</a>
+        <a class="navbar-brand disable-select">Marry in Thai</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,16 +44,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item" id="dashboard">
-              <a class="nav-link" aria-current="page" href="/dashboard" 
+            <li class="nav-item dashboard-vendor-nav" id="dashboard">
+              <a class="nav-link" aria-current="page" href="/dashboard"
                 >Dashboard</a
               >
             </li>
-            <li class="nav-item" id="vendors">
-              <a class="nav-link"  href="/vendors">Vendors</a>
+            <li class="nav-item dashboard-vendor-nav" id="vendors">
+              <a class="nav-link" href="/vendors">Vendors</a>
             </li>
-            <li class="nav-item" id="guests">
-              <a class="nav-link"  href="/guestslist">Guests List</a>
+            <li class="nav-item withoutdropdown" id="guests">
+              <a class="nav-link" href="/guestslist">Guests List</a>
             </li>
 
             <li class="nav-item dropdown" id="registry">
@@ -53,9 +63,11 @@
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
-                aria-expanded="false" 
+                aria-expanded="false"
               >
-                Registry
+                Registry<span class="uparrow"
+                  ><i class="fas fa-caret-up fa-xs"></i
+                ></span>
               </a>
               <ul
                 class="dropdown-menu"
@@ -87,7 +99,9 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Wedding Cards
+                Wedding Cards<span class="uparrow"
+                  ><i class="fas fa-caret-up fa-xs"></i
+                ></span>
               </a>
               <ul
                 class="dropdown-menu"
@@ -170,7 +184,9 @@
                 aria-expanded="false"
                 id="website"
               >
-                Website
+                Website<span class="uparrow"
+                  ><i class="fas fa-caret-up fa-xs"></i
+                ></span>
               </a>
               <ul
                 class="dropdown-menu"
@@ -210,16 +226,18 @@
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
-                aria-expanded="false" 
+                aria-expanded="false"
               >
-                Account
+                Account<span class="uparrow"
+                  ><i class="fas fa-caret-up fa-xs"></i
+                ></span>
               </a>
               <ul
                 class="dropdown-menu"
                 style="
                   box-shadow: 2px 2px #beb7b7;
                   border-radius: 10px 10px;
-                  margin: 1px 0 0 -120px;
+                  margin: 1px 0 0 -80px;
                 "
                 aria-labelledby="navbarDropdown"
               >
@@ -277,7 +295,7 @@
           </ul>
         </div>
       </nav>
-      <header class="p-0 my-4">
+      <header class="p-0 mt-4 mb-3">
         <div
           class="d-flex justify-content-center pt-5"
           style="background-color: white !important"
@@ -291,9 +309,9 @@
         </div>
       </header>
       <div
-  class="container-fluid-fluid"
-  style="padding-top: 8px; background-color: #cecece"
-></div>
+        class="container-fluid-fluid"
+        style="padding-top: 9px; background-color: #cecece"
+      ></div>
       <div class="px-3" style="padding-left: 0px !important">
         {% block content %} {% endblock %}
       </div>
@@ -308,40 +326,36 @@
   <script>
     var currentURL = window.location.pathname;
 
-    // if currnet url == dashboard then make dashboard navitem active 
-    if (currentURL =="/dashboard"){
-      document.getElementById("dashboard").classList.add("active");
+    // if currnet url == dashboard then make dashboard navitem active
+    if (currentURL == "/dashboard") {
+      document.getElementById("dashboard").classList.add("active-navbar");
     }
-    // if currnet url == vendor then make vendor navitem active 
-    else if (currentURL =="/vendors"){
-      document.getElementById("vendors").classList.add("active");
+    // if currnet url == vendor then make vendor navitem active-navbar
+    else if (currentURL == "/vendors") {
+      document.getElementById("vendors").classList.add("active-navbar");
     }
-    
-    // if currnet url == guestlist then make guestlist navitem active 
-    else if (currentURL =="/guestslist"){
-      document.getElementById("guests").classList.add("active");
-    }
-    // if currnet url == registry then make registry navitem active 
-    else if (currentURL =="/registry"){
-      document.getElementById("registry").classList.add("active");
-    }
-    // if currnet url == gifts then make gifts navitem active 
-    else if (currentURL =="/gifts"){
-      document.getElementById("registry").classList.add("active");
-    }
-    // if currnet url == profile then make profile navitem active 
-    else if (currentURL.includes("/profile")){
-      document.getElementById("account").classList.add("active");
-    }
-    else if (currentURL.includes("/invitation_website")){
-      document.getElementById("website").classList.add("active");
-    }
-   else if (currentURL.includes("/vendor-category")){
-    document.getElementById("vendors").classList.add("active");
 
-   }
-   // add more links here like above
-   
+    // if currnet url == guestlist then make guestlist navitem active-navbar
+    else if (currentURL == "/guestslist") {
+      document.getElementById("guests").classList.add("active-navbar");
+    }
+    // if currnet url == registry then make registry navitem active-navbar
+    else if (currentURL == "/registry") {
+      document.getElementById("registry").classList.add("active-navbar");
+    }
+    // if currnet url == gifts then make gifts navitem active-navbar
+    else if (currentURL == "/gifts") {
+      document.getElementById("registry").classList.add("active-navbar");
+    }
+    // if currnet url == profile then make profile navitem active-navbar
+    else if (currentURL.includes("/profile")) {
+      document.getElementById("account").classList.add("active-navbar");
+    } else if (currentURL.includes("/invitation_website")) {
+      document.getElementById("website").classList.add("active-navbar");
+    } else if (currentURL.includes("/vendor-category")) {
+      document.getElementById("vendors").classList.add("active-navbar");
+    }
+    // add more links here like above
   </script>
   {% block scriptPage %} {% endblock %}
 </html>

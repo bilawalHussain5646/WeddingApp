@@ -194,7 +194,10 @@ def login():
                     session['username'] = person[10]
                     session['email'] = person[11]
                     session['contactNumber'] = person[12]
-
+                    city_country = session['Address'].split(",")
+                    session['City'] = city_country[0]
+                    session['Country'] = city_country[1]
+                    print(city_country)
                     cur.execute('''SELECT templateNo,url FROM website where username = %s''',(session['username'],))
                     result=cur.fetchone()
                     if result is None:

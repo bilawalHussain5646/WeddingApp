@@ -1,104 +1,101 @@
 {% extends "default_user.html" %} {%block title%} Vendors {% endblock %} {%block
 content%}
-<div
-  class="container-fluid-fluid"
-  style="padding-top: 8px; background-color: #cecece"
-></div>
+
 <!--Section: Block Content-->
-<section class="container-fluid-fluid mt-5 mb-5 bg-white">
-  <div class="row">
-    <div class="col d-flex justify-content-center mb-4 mb-md-0">
-      <div class="mdb-lightbox">
-        <div class="row product-gallery mx-1">
-          <div class="col mb-0">
-            <figure class="view overlay rounded z-depth-1 main-img">
-              <img
-                src="{{vendor[2]}}"
-                style="width: 35vh"
-                class="img-fluid z-depth-1"
-              />
-            </figure>
-          </div>
-        </div>
-      </div>
+<section class="container mt-3 mb-0">
+  <div class="row mb-0">
+    <div class="col d-flex justify-content-center">
+      <figure class="view overlay rounded z-depth-1 main-img">
+        <img
+          src="{{vendor[2]}}"
+          style="width: 35vh"
+          class="img-fluid z-depth-1"
+        />
+      </figure>
     </div>
   </div>
 
-  <div class="container">
-    <div class="container" style="width: 90%">
-      <div class="row mt-4">
-        <div class="col" style="border-right: 1px solid #cac8c8">
-          <h5 class="mx-5" style="color: #cfb290 !important">
-            {{vendor[1]}} - {{vendor[3]}}
+  <div class="container" style="width: 90%">
+    <div class="row mt-4">
+      <div class="col-lg-6" style="border-right: 1px solid #cac8c8">
+        <h5 class="mx-5" style="color: #cfb290 !important">
+          {{vendor[1]}} - {{vendor[3]}}
+        </h5>
+        <h5 class="pt-3 ms-5" style="color: #aeaeae !important">
+          {{vendor[5]}}
+        </h5>
+      </div>
+      <div class="col-lg-6 ps-5 pt-2">
+        <div class="mb-3">
+          <h5 style="float: left; font-weight: lighter !important">
+            City:&nbsp;&nbsp;&nbsp;
           </h5>
-          <p class="pt-3 mx-5" style="color: #aeaeae">{{vendor[5]}}</p>
+
+          <span>
+            <h4 style="color: #aeaeae !important">{{vendor[4]}}</h4>
+          </span>
         </div>
-        <div class="col">
-          <div class="table-responsive ms-5">
-            <table class="table table-sm table-borderless mb-0">
-              <tbody>
-                <tr>
-                  <th class="pl-0 w-25" scope="row"><p>City</p></th>
-                  <td style="color: #aeaeae !important">{{vendor[4]}}</td>
-                </tr>
-                {% if vendor[7] %}
-                <tr>
-                  <th scope="row">
-                    <p>Phone Number</p>
-                  </th>
+        {% if vendor[7] %}
+        <div class="mb-3">
+          <h5 style="float: left; font-weight: lighter !important">
+            Phone Number:&nbsp;&nbsp;&nbsp;
+          </h5>
 
-                  <td style="color: #aeaeae !important">{{vendor[7]}}</td>
-                </tr>
-                {% endif %} {% if vendor[6] %}
-                <tr>
-                  <th class="pl-0 w-25" scope="row"><p>Email</p></th>
-
-                  <td style="color: #aeaeae !important">{{vendor[6]}}</td>
-                </tr>
-                {% endif %} {% if vendor[8] %}
-                <tr>
-                  <th class="pl-0 w-25" scope="row">
-                    <p>Website</p>
-                  </th>
-
-                  <td><a href="https://{{vendor[8]}}">{{vendor[8]}}</a></td>
-                </tr>
-                {% endif %} {% if vendor[9] %}
-                <tr>
-                  <th class="pl-0 w-25" scope="row">
-                    <p>Instagram</p>
-                  </th>
-
-                  <td><a href="{{vendor[9]}}">{{vendor[9]}}</a></td>
-                </tr>
-                {% endif %} {% if vendor[10] %}
-                <tr>
-                  <th class="pl-0 w-25" scope="row">
-                    <p>Facebook</p>
-                  </th>
-
-                  <td><a href="{{vendor[10]}}">{{vendor[10]}}</a></td>
-                </tr>
-                {% endif %}
-              </tbody>
-            </table>
-          </div>
+          <span>
+            <h4 style="color: #aeaeae !important">{{vendor[7]}}</h4>
+          </span>
         </div>
+        {% endif %} {% if vendor[6] %}
+        <div class="mb-3">
+          <h5 style="float: left; font-weight: lighter !important">
+            Email:&nbsp;&nbsp;&nbsp;
+          </h5>
+
+          <span>
+            <h4 style="color: #aeaeae !important">{{vendor[6]}}</h4>
+          </span>
+        </div>
+        {% endif %} {% if vendor[8] %}
+        <div class="mb-3">
+          <h5 style="float: left; font-weight: lighter !important">
+            Website:&nbsp;&nbsp;&nbsp;
+          </h5>
+
+          <span><a href="https://{{vendor[8]}}">{{vendor[8]}}</a></span>
+        </div>
+        {% endif %} {% if vendor[9] %}
+        <div class="mb-3">
+          <h5 style="float: left; font-weight: lighter !important">
+            Instagram:&nbsp;&nbsp;&nbsp;
+          </h5>
+
+          <span><a href="{{vendor[9]}}">{{vendor[9]}}</a></span>
+        </div>
+        {% endif %} {% if vendor[10] %}
+        <div class="mb-3">
+          <h5 style="float: left; font-weight: lighter !important">
+            Facebook:&nbsp;&nbsp;&nbsp;
+          </h5>
+
+          <span><a href="{{vendor[10]}}">{{vendor[10]}}</a></span>
+        </div>
+        {% endif %}
       </div>
-      <div>
-        <a href="/vendors">
-          <button
-            class="bck px-5 mb-3 mt-5 btn btn-sm text-white fs-5"
-            style="
-              border: 1px solid #ceb08d;
-              background-color: #e4d3c0;
-              margin: 0 0 0 -150px;
-            "
-          >
-            Back
-          </button></a
+    </div>
+    <div>
+      <a href="/vendors">
+        <button
+          class="bck px-5 mb-3 mt-5 btn btn-sm text-white"
+          style="
+            border: 1px solid #ceb08d;
+            background-color: #e4d3c0;
+            margin: 0 0 0 -150px;
+            border: 1px solid #d4b99a !important;
+          "
         >
-      </div>
+          Back
+        </button></a
+      >
     </div>
   </div>
 </section>

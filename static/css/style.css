@@ -32,12 +32,7 @@ h1 {
   font-family: Gabriola;
 }
 p,
-.dash{
-  font-family: Gabriola;
-  font-size: 24px !important;
-}
-
-sup{
+sup {
   padding-left: 20px;
   font-family: Gabriola;
   font-size: 18px !important;
@@ -58,7 +53,7 @@ h4,
 h5 {
   color: #302d2b !important;
   font-family: Gabriola;
-  font-size: 24px !important;
+  font-size: 26px !important;
 }
 option,
 select {
@@ -232,7 +227,8 @@ button:focus,
 .auth-login-button:focus,
 option:focus,
 select:focus,
-input:focus,textarea:focus {
+input:focus,
+textarea:focus {
   outline: none !important;
   box-shadow: none !important;
 }
@@ -253,12 +249,6 @@ input:focus,textarea:focus {
   border-bottom: 0.5px solid #ceae83 !important;
 }
 
-.nav-item {
-  border-radius: 8px 8px !important;
-}
-.navigation-dropdown-color {
-  color: #a6a6a6 !important;
-}
 .sidenav {
   height: 100%;
   width: 100%;
@@ -308,35 +298,61 @@ input:focus,textarea:focus {
   margin-left: 320px;
 }
 .nav-item {
-  font-size: 18px !important;
-  margin: 16px 10px 8px 10px !important;
-  padding: 0px 9px 0 9px !important;
+  line-height: 1 !important;
+  margin: 12px 0px 8px 4px !important;
+  padding: 8px 5px 0px 7px !important;
   border-radius: 8px 8px !important;
 }
+.withoutdropdown {
+  margin: 12px 4px 8px 22px !important;
+}
+.dashboard-vendor-nav {
+  margin: 12px 0px 8px 18px !important;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+.uparrow {
+  margin-left: 6px;
+  font-size: 18px;
+}
 .nav-link {
-  padding: 0 2px 0 2px !important;
-  margin: 0 0 0 0 !important;
+  font-size: 26px !important;
+  padding: 0 2px 0px 2px !important;
+
   color: rgb(166, 166, 166) !important;
 }
-
 .nav-item:hover {
   border: 1px solid #d1b594;
   border-radius: 15px;
 }
-.active {
-  
-  border: 2px solid #d1b594 !important;
+.active-navbar {
+  border: 1px solid #d1b594 !important;
   border-radius: 15px;
 }
-
-tbody, td, tfoot{
-  border-style:none !important;
+.dropdown-menu {
+  border: none !important;
+}
+ul.dropdown-menu.show {
+  padding: 0px !important;
+  min-width: 7rem;
+  box-shadow: 3px 3px #beb7b7 !important;
+}
+.navigation-dropdown-color {
+  padding-left: 10px !important;
+  padding-top: 5px !important;
+  font-size: 18px !important;
+  color: #a6a6a6 !important;
+}
+tbody,
+td,
+tfoot {
+  border-style: none !important;
 }
 
-
-.dropdown-item:focus{
-  outline:none !important;
-  background:none !important;
+.dropdown-item:focus {
+  outline: none !important;
+  background: none !important;
 }
 @media screen and (max-width: 1186px) and (min-width: 991px) {
   .disable-select {
@@ -370,33 +386,74 @@ button {
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-.form-check-input:checked {
-  background-color: #e3d1bd !important;
-  border-color: #e3d1bd !important;
-  color: #e3d1bd !important;
-  box-shadow: none !important;
-}
-.form-check-input {
-  border-color: #e3d1bd !important;
-  box-shadow: none !important;
-}
-.form-switch .form-check-input {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#e3d1bd'/%3e%3c/svg%3e");
-}
-.form-switch .form-check-input:focus {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#e3d1bd'/%3e%3c/svg%3e");
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 18px;
 }
 
-option{
-  
-    background-color: #ffff !important;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 1px;
+  left: -16px;
+  right: 0;
+  bottom: -3px;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 11px;
+  width: 11px;
+  left: 4px;
+  bottom: 5px;
+  background-color: #ffffff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(206, 176, 141);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(206, 176, 141);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(17px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+option {
+  background-color: #ffff !important;
 }
 
 option:hover {
   background-color: #f8c2ae !important;
 }
 option:focus {
-  
   background-color: #f8c2ae !important;
 }
 option:checked,
@@ -419,7 +476,6 @@ option:active {
   }
 }
 .dropbtn {
-
   border: none;
   cursor: pointer;
 }
@@ -434,7 +490,7 @@ option:active {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -445,7 +501,9 @@ option:active {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -453,4 +511,209 @@ option:active {
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+/* Dashboard CSS */
+
+@media (min-width: 768px) {
+  .col-sm-3half,
+  .col-sm-8half {
+    float: left;
+  }
+  .col-sm-3half {
+    width: 30.5% !important;
+    background-color: #cecece;
+  }
+  .col-sm-8half {
+    width: 69.5% !important;
+  }
+}
+h4.col-8.text-center {
+  margin-bottom: 0px;
+}
+.title-dashboard {
+  border-radius: 0px !important;
+  border-bottom: 0.5px solid rgb(166, 166, 166);
+  margin-bottom: 0px !important;
+  line-height: 1.5;
+  margin-top: 10px !important;
+}
+.Wedding-Date-Location-labels {
+  font-family: Gabriola;
+  font-size: 22px !important;
+}
+.weddingDate {
+  margin-top: -10px;
+  padding-left: 7px;
+}
+.Wedding-Date-Location {
+  padding-top: 26px !important;
+  padding-left: 32px !important;
+  margin-right: 0px !important;
+  padding-bottom: 26px !important;
+  border-bottom: 7px solid #cecece !important;
+}
+
+.wedding-calendar-logo {
+  margin-right: 19px !important;
+  margin-top: 13px !important;
+}
+.wedding-location-logo {
+  margin-left: 11px !important;
+  margin-right: 10px !important;
+  margin-top: 13px !important;
+}
+.weddingCountry {
+  margin-top: -10px;
+  padding-left: 7px;
+}
+.GeneralTab {
+  background-color: #fbf7f3 !important;
+}
+.GeneralTabLabel {
+  font-family: Gabriola;
+  font-size: 22px !important;
+}
+.GeneralTabView {
+  font-size: 22px !important;
+  color: rgb(206, 176, 141);
+}
+.GeneralTabView:hover {
+  color: rgb(206, 176, 141);
+}
+.generalTab-box {
+  font-family: Gabriola;
+  font-size: 22px !important;
+  margin-top: 17px !important;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(166, 166, 166);
+}
+
+/* Vendors CSS */
+.vendors {
+  padding-top: 63px !important;
+}
+.searchbar {
+  line-height: 0.3 !important;
+  padding-left: 75px;
+}
+.searchbar-item {
+  border-radius: 7px !important;
+  border: 1px solid #d4b99a !important;
+}
+.selection-item-button {
+  border-radius: 5px !important;
+  border: 1px solid #d4b99a !important;
+}
+.selection {
+  padding-bottom: 0px !important;
+  border-radius: 7px !important;
+  border: none !important;
+  line-height: 1 !important;
+}
+.selection-label {
+  font-size: 24px !important;
+  font-family: Gabriola;
+  color: rgb(127, 127, 127) !important;
+}
+.selection-button {
+  color: white;
+  padding: 5px 2px 0px 4px !important;
+  line-height: none !important;
+  border-radius: 5px !important;
+}
+@media (min-width: 768px) {
+  .col-sm-2half {
+    float: left;
+  }
+  .col-sm-2half {
+    width: 20% !important;
+  }
+}
+/* ///  DECORATION CSS ///  */
+.cont_select_center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -30px;
+  margin-left: -150px;
+}
+
+.cont_heg_50 {
+  position: absolute;
+  height: 50%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #fd7b52;
+}
+/* ///  END DECORATION CSS  ///  */
+
+.select_mate {
+  position: relative;
+  float: left;
+
+  width: 200px;
+  font-family: "Roboto";
+  color: #777;
+  font-weight: 300;
+  background-color: #fff;
+  box-shadow: none;
+  border-radius: 15px;
+  /* Oculto el elemento select */
+}
+select {
+  position: absolute;
+  height: 0px;
+  opacity: 0;
+  z-index: -1;
+}
+.cont_list_select_mate {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.cont_select_int {
+  position: absolute;
+  left: 0px;
+  top: 5px;
+  z-index: 999;
+  overflow: hidden;
+  height: 0px;
+  width: 100%;
+  background-color: #fff;
+  padding: 0px;
+  border-radius: 25px;
+  border: 1px solid white;
+}
+.cont_select_int li {
+  position: relative;
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  background-color: white;
+  list-style-type: none;
+  padding: 10px 2%;
+  cursor: default;
+}
+.cont_select_int li:last-child {
+  border-bottom: 0px;
+}
+.cont_select_int li:hover {
+  color: white;
+  background-color: #d4b99a;
+}
+.cont_select_int li .active {
+  background-color: #eeeeee;
+  border: none !important;
+}
+
+/* etiqueta <p> con la opcion selecionada  */
+.selecionado_opcion {
+  padding: 20px 2%;
+
+  display: block;
+  margin: 0px;
+  cursor: default;
 }
